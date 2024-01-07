@@ -14,13 +14,23 @@ programming_languages = [item.text.strip() for item in language_items]  # Remove
 
 programming_languages = programming_languages[124:814]
 
-# for i, v in enumerate(programming_languages):
-#     print(i, v)
+# for language in programming_languages:
+#     print(language)
+
+temp_lang_list=[]
+languages_dict={}
+
+for language in range(len(programming_languages)):
+    if programming_languages[language][1:]==programming_languages[language+1][1:]:
+        temp_lang_list.append(programming_languages[language])
+    else:
+        " implement line 31 logic "
+    pass
 
 '''
 language_dict={
     'A': [''],
-    'B': ['B','Babbage','Ballerina','Bash','BASIC','Batch file','bc','BCPL','BeanShell','BETA','BETA','BLISS','Blocky','BlooP','Boo','Boomerang','Bosque'],
+    'B': ['B','Babbage','Ballerina','Bash','BASIC','Batch file','bc','BCPL','BeanShell','BETA','BLISS','Blocky','BlooP','Boo','Boomerang','Bosque'],
     'C': []
 }
 '''
