@@ -13,6 +13,19 @@ rprint("[sandy_brown]+--------------------+[/sandy_brown]", end="\n\n")
 app = typer.Typer()
 
 @app.command()
+def colours():
+    print("Command to see how the colour looks in the terminal")
+    rprint("[gold3]gold3[/gold3]")
+    rprint("[orange_red1]orange_red1[/orange_red1]")
+    rprint("[dark_orange]dark_orange[/dark_orange]")
+    rprint("[orange3]orange3[/orange3]")
+    rprint("[light_salmon1]light_salmon1[/light_salmon1]")
+    rprint("[grey27]grey27[/grey27]")
+    rprint("[cyan1]cyan1[/cyan1]")
+    rprint("[turquoise4]turquoise4[/turquoise4]")
+    
+
+@app.command()
 def create():
     rprint("[gold3]Please enter the name of the project  :[/gold3]")
     name = input()
@@ -35,8 +48,8 @@ def create():
                 if database_name_change_choice.lower() == 'y':
                     rprint("[gold3]Enter name of database.[/gold3]")
                     user_edited_database_name = input()
-                    rprint(f"[green1]Success ✨[/green1]")
-                    rprint(f"[green1]Database name changed to {user_edited_database_name.replace(" ","")}.db[/green1]")
+                    rprint(f"[dark_sea_green2]Success ✨[/dark_sea_green2]")
+                    rprint(f"[dark_sea_green2]Database name changed to {user_edited_database_name.replace(" ","")}.db[/dark_sea_green2]")
                     break
 
                 elif database_name_change_choice.lower()=='n':
@@ -62,7 +75,8 @@ def create():
             if abort_rename_choice.lower()=='r':
                 rprint("[deep_pink2]Please enter renamed name of the project[/deep_pink2]")
                 renamed_name=input()
-                rprint(f"[deep_pink2]Renamed name of the project is {renamed_name.strip()}[/deep_pink2]")
+                rprint(f"[dark_sea_green2]Success ✨[/dark_sea_green2]")
+                rprint(f"[dark_sea_green2]Renamed name of the project is {renamed_name.strip()}[/dark_sea_green2]")
                 break
 
             elif abort_rename_choice.lower()=='a':
