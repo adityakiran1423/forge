@@ -12,45 +12,71 @@ rprint("[sandy_brown]+--------------------+[/sandy_brown]", end="\n\n")
 
 app = typer.Typer()
 
-
 @app.command()
 def create():
-    rprint("[gold3]Implementing logic for creating template here[/gold3]")
-    name = input("Please enter the name of the project  :  ")
+    rprint("[gold3]Please enter the name of the project  :[/gold3]")
+    name = input()
 
     rprint(f"[gold3]The name of the project you have entered is '{name.strip()}'[/gold3]")
 
-    db_creation_choice = input("Please enter 'y' to proceed with creation of Database, enter 'n' to abort  :  ")
+    # proceed with database creation?
+    rprint("[gold3]Proceed with project creation? 'y'/'N'[/gold3]")
+    while True:
+        db_creation_choice=input()
 
-    if db_creation_choice.lower() == "y":
-        rprint(f"[gold3]The name of the database is {name.replace(" ","")}[/gold3]")
-        rprint("[gold3]Please enter 'y' to proceed or enter 'n' to change the name of the database[/gold3]")
-        database_name_change_choice = input()
+        if db_creation_choice.lower() == "y":
+            rprint(f"[gold3]The name of the database is {name.replace(" ","")}.db[/gold3]")
 
-        if database_name_change_choice.lower() == "n":
-            rprint("[gold3]Please enter the name of the database according to your need.[/gold3]")
-            user_edited_database_name = input()
-            rprint(f"[green1]Database name changed to {user_edited_database_name.replace(" ","")}[/green1]")
+            # proceed to change database name?
+            rprint("[gold3]Do you want to change the name of the database? 'y'/'N'[/gold3]")
+            # print("running while here")
+            while True:
+                database_name_change_choice = input()
+                if database_name_change_choice.lower() == 'y':
+                    rprint("[gold3]Enter name of database.[/gold3]")
+                    user_edited_database_name = input()
+                    rprint(f"[green1]Success ✨[/green1]")
+                    rprint(f"[green1]Database name changed to {user_edited_database_name.replace(" ","")}.db[/green1]")
+                    break
 
-        elif database_name_change_choice.lower()=='y':
-            rprint("[gold3]Database name retained.[/gold3]")
-            exit(1)
-        
+                elif database_name_change_choice.lower()=='n':
+                    rprint("[gold3]Database name retained.[/gold3]")
+                    break
+                
+                else:
+                    rprint("[red3]Did not enter 'y' or 'n'.[/red3]")
+                    # exit(1)
+
+                "+--------------------------------------+"
+                "| implement creation of database logic |"
+                "+--------------------------------------+"
+            break
+
+        elif db_creation_choice.lower() == "n":
+            rprint(f"[deep_pink2]Project '{name.strip()}' not created \nExiting because of exit(1)[/deep_pink2]")
+            rprint("[deep_pink2]Do you want to rename your project or abort creation?[/deep_pink2]")
+            rprint("[deep_pink2]Press 'r' to rename and 'a' to abort project creation[/deep_pink2]")
+
+            abort_rename_choice=input()
+
+            if abort_rename_choice.lower()=='r':
+                rprint("[deep_pink2]Please enter renamed name of the project[/deep_pink2]")
+                renamed_name=input()
+                rprint(f"[deep_pink2]Renamed name of the project is {renamed_name.strip()}[/deep_pink2]")
+                break
+
+            elif abort_rename_choice.lower()=='a':
+                rprint("[deep_pink2]Aborting project creation process[/deep_pink2]")
+                break
+            else:
+                rprint("[red3]Did not enter 'a' or 'r'[/red3]")
+
+            break
+            # exit(1)
+
         else:
-            rprint("[gold3]Did not enter 'y' or 'n'.[/gold3]")
-            exit(1)
-
-        "+--------------------------------------+"
-        "| implement creation of database logic |"
-        "+--------------------------------------+"
-
-    elif db_creation_choice.lower() == "n":
-        rprint("[deep_pink2]Database name not changed \n Exiting because of exit(1)[/deep_pink2]")
-        exit(1)
-
-    else:
-        rprint("[deep_pink2]Exiting because option enetered wasn't 'y' or 'n' and exit(1)[/deep_pink2]")
-        exit(1)
+            rprint("[deep_pink2]Did not enter 'y' or 'N'[/deep_pink2]")
+            # exit(1)
 
 
 @app.command()
