@@ -21,6 +21,7 @@ def colours():
     rprint("[orange3]orange3[/orange3]")
     rprint("[light_salmon1]light_salmon1[/light_salmon1]")
     rprint("[grey27]grey27[/grey27]")
+    rprint("[cyan]cyan[/cyan]")
     rprint("[cyan1]cyan1[/cyan1]")
     rprint("[turquoise4]turquoise4[/turquoise4]")
     
