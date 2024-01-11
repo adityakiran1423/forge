@@ -10,6 +10,28 @@ rprint("[sandy_brown]+--------------------+[/sandy_brown]")
 rprint("[sandy_brown]| Welcome to Forge🔥 |[/sandy_brown]")
 rprint("[sandy_brown]+--------------------+[/sandy_brown]", end="\n\n")
 
+'''
+Make a new file for creating a database and then import it
+
+implement dataBase creation here
+Creation of only one dataBase, create three tables :
+1. Name Table (stores the name of the projects)
+    * name (primary key)
+2. Description Table (stores details about the project)
+    * name (foreign key)
+    * description
+    * aim
+    * resources
+    * status
+    * github link
+    * tech stack (primary key)
+3. Tech Table (stores the tech stack of the project)
+    * frontend
+    * backend
+    * database
+    * web frame work 
+'''
+
 app = typer.Typer()
 
 @app.command()
@@ -21,8 +43,8 @@ def colours():
     rprint("[orange3]orange3[/orange3]")
     rprint("[light_salmon1]light_salmon1[/light_salmon1]")
     rprint("[grey27]grey27[/grey27]")
-    rprint("[cyan]cyan[/cyan]")
     rprint("[cyan1]cyan1[/cyan1]")
+    rprint("[cyan]cyan[/cyan]")
     rprint("[turquoise4]turquoise4[/turquoise4]")
     
 
@@ -39,49 +61,26 @@ def create():
         db_creation_choice=input()
 
         if db_creation_choice.lower() == "y":
-            rprint(f"[gold3]The name of the database is {name.replace(" ","")}.db[/gold3]")
-
-            # proceed to change database name?
-            rprint("[gold3]Do you want to change the name of the database? 'y'/'N'[/gold3]")
-            # print("running while here")
-            while True:
-                database_name_change_choice = input()
-                if database_name_change_choice.lower() == 'y':
-                    rprint("[gold3]Enter name of database.[/gold3]")
-                    user_edited_database_name = input()
-                    rprint(f"[dark_sea_green2]Success ✨[/dark_sea_green2]")
-                    rprint(f"[dark_sea_green2]Database name changed to {user_edited_database_name.replace(" ","")}.db[/dark_sea_green2]")
-                    break
-
-                elif database_name_change_choice.lower()=='n':
-                    rprint("[gold3]Database name retained.[/gold3]")
-                    break
-                
-                else:
-                    rprint("[red3]Did not enter 'y' or 'n'.[/red3]")
-                    # exit(1)
-
-                "+--------------------------------------+"
-                "| implement creation of database logic |"
-                "+--------------------------------------+"
+            rprint(f"[chartreuse3]Success ✨[/chartreuse3]")
+            rprint(f"[chartreuse3]The name of the project is '{name.strip()}'[/chartreuse3]")
             break
 
         elif db_creation_choice.lower() == "n":
-            rprint(f"[deep_pink2]Project '{name.strip()}' not created \nExiting because of exit(1)[/deep_pink2]")
-            rprint("[deep_pink2]Do you want to rename your project or abort creation?[/deep_pink2]")
-            rprint("[deep_pink2]Press 'r' to rename and 'a' to abort project creation[/deep_pink2]")
+            rprint(f"[light_salmon1]Project '{name.strip()}' not created[/light_salmon1]")
+            rprint("[light_salmon1]Do you want to rename your project or abort creation?[/light_salmon1]")
+            rprint("[light_salmon1]Press 'r' to rename and 'a' to abort project creation[/light_salmon1]")
 
             abort_rename_choice=input()
 
             if abort_rename_choice.lower()=='r':
-                rprint("[deep_pink2]Please enter renamed name of the project[/deep_pink2]")
+                rprint("[light_salmon1]Please enter renamed name of the project[/light_salmon1]")
                 renamed_name=input()
-                rprint(f"[dark_sea_green2]Success ✨[/dark_sea_green2]")
-                rprint(f"[dark_sea_green2]Renamed name of the project is {renamed_name.strip()}[/dark_sea_green2]")
+                rprint(f"[chartreuse3]Success ✨[/chartreuse3]")
+                rprint(f"[chartreuse3]Renamed name of the project is {renamed_name.strip()}[/chartreuse3]")
                 break
 
             elif abort_rename_choice.lower()=='a':
-                rprint("[deep_pink2]Aborting project creation process[/deep_pink2]")
+                rprint("[red3]Aborting project creation process[/red3]")
                 break
             else:
                 rprint("[red3]Did not enter 'a' or 'r'[/red3]")
@@ -90,13 +89,13 @@ def create():
             # exit(1)
 
         else:
-            rprint("[deep_pink2]Did not enter 'y' or 'N'[/deep_pink2]")
+            rprint("[red3]Did not enter 'y' or 'N'[/red3]")
             # exit(1)
 
 
 @app.command()
 def status():
-    rprint("[gold3]Valid status codes for projects : [/gold3]", end='\n\n')
+    rprint("[gold3]Valid status codes for projects : [/gold3]", end='\n')
     rprint("[spring_green3]1. In Progress[/spring_green3]")
     rprint("[royal_blue1]2. Completed[/royal_blue1]")
     rprint("[yellow1]3. On Hold[/yellow1]")
