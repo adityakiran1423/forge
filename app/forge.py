@@ -13,6 +13,7 @@ rprint("[red]+-----------------------+[/red]", end="\n\n")
 
 app = typer.Typer()
 
+
 @app.command()
 def colours():
     print("Command to see how the colour looks in the terminal")
@@ -26,7 +27,7 @@ def colours():
     rprint("[cyan1]cyan1[/cyan1]")
     rprint("[cyan]cyan[/cyan]")
     rprint("[turquoise4]turquoise4[/turquoise4]")
-    
+
 
 @app.command()
 def create():
@@ -38,7 +39,7 @@ def create():
     # proceed with database creation?
     rprint("[gold3]Proceed with project creation? 'y'/'N'[/gold3]")
     while True:
-        db_creation_choice=input()
+        db_creation_choice = input()
 
         if db_creation_choice.lower() == "y":
             rprint(f"[chartreuse3]Success ✨[/chartreuse3]")
@@ -50,16 +51,16 @@ def create():
             rprint("[light_salmon1]Do you want to rename your project or abort creation?[/light_salmon1]")
             rprint("[light_salmon1]Press 'r' to rename and 'a' to abort project creation[/light_salmon1]")
             while True:
-                abort_rename_choice=input()
+                abort_rename_choice = input()
 
-                if abort_rename_choice.lower()=='r':
+                if abort_rename_choice.lower() == "r":
                     rprint("[light_salmon1]Please enter renamed name of the project[/light_salmon1]")
-                    renamed_name=input()
+                    renamed_name = input()
                     rprint(f"[chartreuse3]Success ✨[/chartreuse3]")
                     rprint(f"[chartreuse3]Renamed name of the project is {renamed_name.strip()}[/chartreuse3]")
                     break
 
-                elif abort_rename_choice.lower()=='a':
+                elif abort_rename_choice.lower() == "a":
                     rprint("[red3]Aborting project creation process[/red3]")
                     break
 
@@ -76,34 +77,34 @@ def create():
 
 @app.command()
 def status():
-    rprint("[gold3]Valid status codes for projects : [/gold3]", end='\n')
+    rprint("[gold3]Valid status codes for projects : [/gold3]", end="\n")
     rprint("[spring_green3]1. In Progress[/spring_green3]")
     rprint("[royal_blue1]2. Completed[/royal_blue1]")
     rprint("[yellow1]3. On Hold[/yellow1]")
     rprint("[dark_orange3]4. Dropped[/dark_orange3]")
     rprint("[grey50]5. Plan On Doing[/grey50]")
     print()
-    
-    status_choice=input("Please enter the status of your project :")
-    status_choice=status_choice.strip()
 
-    if status_choice.lower()=='1' or status_choice.lower()=="in progress":
+    status_choice = input("Please enter the status of your project :")
+    status_choice = status_choice.strip()
+
+    if status_choice.lower() == "1" or status_choice.lower() == "in progress":
         rprint('[spring_green3]Project status set to "In Progress"[/spring_green3]')
         exit(1)
 
-    elif status_choice=='2' or status_choice.lower()=="completed":
+    elif status_choice == "2" or status_choice.lower() == "completed":
         rprint('[royal_blue1]Project status set to "Completed"[/royal_blue1]')
         exit(1)
 
-    elif status_choice=='3' or status_choice.lower()=="on hold":
+    elif status_choice == "3" or status_choice.lower() == "on hold":
         rprint('[yellow1]Project status set to "On Hold"[/yellow1]')
         exit(1)
 
-    elif status_choice=='4' or status_choice.lower()=="dropped":
+    elif status_choice == "4" or status_choice.lower() == "dropped":
         rprint('[dark_orange3]Project status set to "Dropped"[/dark_orange3]')
         exit(1)
 
-    elif status_choice=='5' or status_choice.lower()=="plan on doing":
+    elif status_choice == "5" or status_choice.lower() == "plan on doing":
         rprint('[grey50]Project status set to "Plan On Doing"[/grey50]')
         exit(1)
 
