@@ -2,35 +2,14 @@
 
 import typer
 from rich import print as rprint
-import sqlite3
+
+# import sqlite3
 
 print()
 
-rprint("[sandy_brown]+--------------------+[/sandy_brown]")
-rprint("[sandy_brown]| Welcome to Forge🔥 |[/sandy_brown]")
-rprint("[sandy_brown]+--------------------+[/sandy_brown]", end="\n\n")
-
-'''
-Make a new file for creating a database and then import it
-
-implement dataBase creation here
-Creation of only one dataBase, create three tables :
-1. Name Table (stores the name of the projects)
-    * name (primary key)
-2. Description Table (stores details about the project)
-    * name (foreign key)
-    * description
-    * aim
-    * resources
-    * status
-    * github link
-    * tech stack (primary key)
-3. Tech Table (stores the tech stack of the project)
-    * frontend
-    * backend
-    * database
-    * web frame work 
-'''
+rprint("[red]+-----------------------+[/red]")
+rprint("[red]|[/red][dark_orange] Welcome to Forge ⚒️ 🔥 [/dark_orange][red]|[/red]")
+rprint("[red]+-----------------------+[/red]", end="\n\n")
 
 app = typer.Typer()
 
@@ -38,6 +17,7 @@ app = typer.Typer()
 def colours():
     print("Command to see how the colour looks in the terminal")
     rprint("[gold3]gold3[/gold3]")
+    rprint("[red]red[/red]")
     rprint("[orange_red1]orange_red1[/orange_red1]")
     rprint("[dark_orange]dark_orange[/dark_orange]")
     rprint("[orange3]orange3[/orange3]")
@@ -69,21 +49,22 @@ def create():
             rprint(f"[light_salmon1]Project '{name.strip()}' not created[/light_salmon1]")
             rprint("[light_salmon1]Do you want to rename your project or abort creation?[/light_salmon1]")
             rprint("[light_salmon1]Press 'r' to rename and 'a' to abort project creation[/light_salmon1]")
+            while True:
+                abort_rename_choice=input()
 
-            abort_rename_choice=input()
+                if abort_rename_choice.lower()=='r':
+                    rprint("[light_salmon1]Please enter renamed name of the project[/light_salmon1]")
+                    renamed_name=input()
+                    rprint(f"[chartreuse3]Success ✨[/chartreuse3]")
+                    rprint(f"[chartreuse3]Renamed name of the project is {renamed_name.strip()}[/chartreuse3]")
+                    break
 
-            if abort_rename_choice.lower()=='r':
-                rprint("[light_salmon1]Please enter renamed name of the project[/light_salmon1]")
-                renamed_name=input()
-                rprint(f"[chartreuse3]Success ✨[/chartreuse3]")
-                rprint(f"[chartreuse3]Renamed name of the project is {renamed_name.strip()}[/chartreuse3]")
-                break
+                elif abort_rename_choice.lower()=='a':
+                    rprint("[red3]Aborting project creation process[/red3]")
+                    break
 
-            elif abort_rename_choice.lower()=='a':
-                rprint("[red3]Aborting project creation process[/red3]")
-                break
-            else:
-                rprint("[red3]Did not enter 'a' or 'r'[/red3]")
+                else:
+                    rprint("[red3]Did not enter 'a' or 'r'[/red3]")
 
             break
             # exit(1)
