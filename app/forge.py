@@ -15,21 +15,6 @@ app = typer.Typer()
 
 
 @app.command()
-def colours():
-    print("Command to see how the colour looks in the terminal")
-    rprint("[gold3]gold3[/gold3]")
-    rprint("[red]red[/red]")
-    rprint("[orange_red1]orange_red1[/orange_red1]")
-    rprint("[dark_orange]dark_orange[/dark_orange]")
-    rprint("[orange3]orange3[/orange3]")
-    rprint("[light_salmon1]light_salmon1[/light_salmon1]")
-    rprint("[grey27]grey27[/grey27]")
-    rprint("[cyan1]cyan1[/cyan1]")
-    rprint("[cyan]cyan[/cyan]")
-    rprint("[turquoise4]turquoise4[/turquoise4]")
-
-
-@app.command()
 def create():
     rprint("[gold3]Please enter the name of the project  :[/gold3]")
     name = input()
@@ -37,7 +22,9 @@ def create():
     rprint(f"[gold3]The name of the project you have entered is '{name.strip()}'[/gold3]")
 
     # proceed with database creation?
-    rprint("[gold3]Proceed with project creation? 'y'/'N'[/gold3]")
+    rprint("[gold3]Proceed with project creation? [y/N][/gold3]", end='')
+    print("[y/N]")
+
     while True:
         db_creation_choice = input()
 
@@ -46,10 +33,12 @@ def create():
             rprint(f"[chartreuse3]The name of the project is '{name.strip()}'[/chartreuse3]")
             break
 
-        elif db_creation_choice.lower() == "n":
-            rprint(f"[light_salmon1]Project '{name.strip()}' not created[/light_salmon1]")
-            rprint("[light_salmon1]Do you want to rename your project or abort creation?[/light_salmon1]")
-            rprint("[light_salmon1]Press 'r' to rename and 'a' to abort project creation[/light_salmon1]")
+        elif db_creation_choice.lower() == "":
+            rprint(f"[light_salmon1]Project '{name.strip()}' not created ❌[/light_salmon1]")
+            # rprint("[light_salmon1]Do you want to rename your project or abort creation?[/light_salmon1]")
+            # rprint("[light_salmon1]Press 'r' to rename and 'a' to abort project creation[/light_salmon1]")
+            rprint("[light_salmon1]Do you want to rename or abort project creation? [/light_salmon1]")
+            print("[r/A]")
             while True:
                 abort_rename_choice = input()
 
@@ -60,19 +49,18 @@ def create():
                     rprint(f"[chartreuse3]Renamed name of the project is {renamed_name.strip()}[/chartreuse3]")
                     break
 
-                elif abort_rename_choice.lower() == "a":
+                elif abort_rename_choice.lower() == "":
                     rprint("[red3]Aborting project creation process[/red3]")
                     break
 
                 else:
-                    rprint("[red3]Did not enter 'a' or 'r'[/red3]")
+                    rprint("[red3]Did not enter 'r' or 'A'❗[/red3]")
+                    # rprint("[red3]Did not enter 'a' or 'r' ❗❗❗[/red3]")
 
             break
-            # exit(1)
-
+            
         else:
-            rprint("[red3]Did not enter 'y' or 'N'[/red3]")
-            # exit(1)
+            rprint("[red3]Did not enter 'y' or 'N'❗[/red3]")
 
 
 @app.command()
@@ -130,3 +118,18 @@ def delete():
 
 if __name__ == "__main__":
     app()
+
+
+# @app.command()
+# def colours():
+#     print("Command to see how the colour looks in the terminal")
+#     rprint("[gold3]gold3[/gold3]")
+#     rprint("[red]red[/red]")
+#     rprint("[orange_red1]orange_red1[/orange_red1]")
+#     rprint("[dark_orange]dark_orange[/dark_orange]")
+#     rprint("[orange3]orange3[/orange3]")
+#     rprint("[light_salmon1]light_salmon1[/light_salmon1]")
+#     rprint("[grey27]grey27[/grey27]")
+#     rprint("[cyan1]cyan1[/cyan1]")
+#     rprint("[cyan]cyan[/cyan]")
+#     rprint("[turquoise4]turquoise4[/turquoise4]")

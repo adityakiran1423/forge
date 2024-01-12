@@ -19,3 +19,7 @@ Creation of only one dataBase, create three tables :
     * database
     * web frame work 
 '''
+
+import sqlite3
+
+connection = sqlite3.connect("forge.db")
