@@ -64,62 +64,30 @@ def create():
 
 
 @app.command()
-def status():
-    rprint("[gold3]Valid status codes for projects : [/gold3]", end="\n")
-    rprint("[spring_green3]1. In Progress[/spring_green3]")
-    rprint("[royal_blue1]2. Completed[/royal_blue1]")
-    rprint("[yellow1]3. On Hold[/yellow1]")
-    rprint("[dark_orange3]4. Dropped[/dark_orange3]")
-    rprint("[grey50]5. Plan On Doing[/grey50]")
-    print()
-
-    status_choice = input("Please enter the status of your project :")
-    status_choice = status_choice.strip()
-
-    if status_choice.lower() == "1" or status_choice.lower() == "in progress":
-        rprint('[spring_green3]Project status set to "In Progress"[/spring_green3]')
-        exit(1)
-
-    elif status_choice == "2" or status_choice.lower() == "completed":
-        rprint('[royal_blue1]Project status set to "Completed"[/royal_blue1]')
-        exit(1)
-
-    elif status_choice == "3" or status_choice.lower() == "on hold":
-        rprint('[yellow1]Project status set to "On Hold"[/yellow1]')
-        exit(1)
-
-    elif status_choice == "4" or status_choice.lower() == "dropped":
-        rprint('[dark_orange3]Project status set to "Dropped"[/dark_orange3]')
-        exit(1)
-
-    elif status_choice == "5" or status_choice.lower() == "plan on doing":
-        rprint('[grey50]Project status set to "Plan On Doing"[/grey50]')
-        exit(1)
-
-    else:
-        rprint("[red3]Please enter a valid number or status number[/red3]")
-        exit(1)
-
-
-@app.command()
 def update():
     rprint("[gold3]implement logic for updating info about project here[/gold3]")
+    "update contents of the table of a specific table"
+
 
 
 @app.command()
 def show():
     rprint("[gold3]implement logic for printing specified paramenter of project here[/gold3]")
+    "will display only the names of the project names"
+    "after identifying which project's details are needed, it will output relevant info"
 
 
 @app.command()
 def delete():
     rprint("[gold3]implement logic for deleting a project here[/gold3]")
+    "used for deleting projects once they are created"
 
 
 if __name__ == "__main__":
     app()
 
 
+"command logic testing colours for terminal output"
 # @app.command()
 # def colours():
 #     print("Command to see how the colour looks in the terminal")
@@ -133,3 +101,42 @@ if __name__ == "__main__":
 #     rprint("[cyan1]cyan1[/cyan1]")
 #     rprint("[cyan]cyan[/cyan]")
 #     rprint("[turquoise4]turquoise4[/turquoise4]")
+    
+" ------------------------------------------------------- "
+
+"logic for project status column"
+# rprint("[spring_green3]1. In Progress[/spring_green3]")
+# rprint("[royal_blue1]2. Completed[/royal_blue1]")
+# rprint("[yellow1]3. On Hold[/yellow1]")
+# rprint("[dark_orange3]4. Dropped[/dark_orange3]")
+# rprint("[grey50]5. Plan On Doing[/grey50]")
+# print()
+
+# status_choice = input("Please enter the status of your project :")
+# status_choice = status_choice.strip()
+
+# rprint("[gold3]Please enter the name of the project  :[/gold3]")
+
+# if status_choice.lower() == "1" or status_choice.lower() == "in progress":
+#     rprint('[spring_green3]Project status set to "In Progress"[/spring_green3]')
+#     exit(1)
+
+# elif status_choice == "2" or status_choice.lower() == "completed":
+#     rprint('[royal_blue1]Project status set to "Completed"[/royal_blue1]')
+#     exit(1)
+
+# elif status_choice == "3" or status_choice.lower() == "on hold":
+#     rprint('[yellow1]Project status set to "On Hold"[/yellow1]')
+#     exit(1)
+
+# elif status_choice == "4" or status_choice.lower() == "dropped":
+#     rprint('[dark_orange3]Project status set to "Dropped"[/dark_orange3]')
+#     exit(1)
+
+# elif status_choice == "5" or status_choice.lower() == "plan on doing":
+#     rprint('[grey50]Project status set to "Plan On Doing"[/grey50]')
+#     exit(1)
+
+# else:
+#     rprint("[red3]Please enter a valid number or status number[/red3]")
+#     exit(1)
