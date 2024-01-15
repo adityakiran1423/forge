@@ -5,13 +5,18 @@ from rich import print as rprint
 
 # import sqlite3
 
-print()
-
-rprint("[red]+-----------------------+[/red]")
-rprint("[red]|[/red][dark_orange] Welcome to Forge ⚒️ 🔥 [/dark_orange][red]|[/red]")
-rprint("[red]+-----------------------+[/red]", end="\n\n")
+rprint("[red]+------------+[/red]")
+rprint("[red]| [/red][dark_orange]Forge ⚒️ 🔥[/dark_orange][red] |[/red]")
+rprint("[red]+------------+[/red]")
 
 app = typer.Typer()
+
+@app.command()
+def welcome():
+    print()
+    rprint("[red]+-----------------------+[/red]")
+    rprint("[red]|[/red][dark_orange] Welcome to Forge ⚒️ 🔥 [/dark_orange][red]|[/red]")
+    rprint("[red]+-----------------------+[/red]", end="\n\n")
 
 
 @app.command()
@@ -35,8 +40,6 @@ def create():
 
         elif db_creation_choice.lower() == "":
             rprint(f"[light_salmon1]Project '{name.strip()}' not created ❌[/light_salmon1]")
-            # rprint("[light_salmon1]Do you want to rename your project or abort creation?[/light_salmon1]")
-            # rprint("[light_salmon1]Press 'r' to rename and 'a' to abort project creation[/light_salmon1]")
             rprint("[light_salmon1]Do you want to rename or abort project creation? [/light_salmon1]")
             print("[r/A]")
             while True:
@@ -55,7 +58,6 @@ def create():
 
                 else:
                     rprint("[red3]Did not enter 'r' or 'A'❗[/red3]")
-                    # rprint("[red3]Did not enter 'a' or 'r' ❗❗❗[/red3]")
 
             break
             
@@ -86,6 +88,7 @@ def delete():
 if __name__ == "__main__":
     app()
 
+" ########################################################################### "
 
 "command logic testing colours for terminal output"
 # @app.command()
@@ -102,7 +105,7 @@ if __name__ == "__main__":
 #     rprint("[cyan]cyan[/cyan]")
 #     rprint("[turquoise4]turquoise4[/turquoise4]")
     
-" ------------------------------------------------------- "
+" ------------------------------------------------------------------------------- "
 
 "logic for project status column"
 # rprint("[spring_green3]1. In Progress[/spring_green3]")
