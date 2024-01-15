@@ -1,7 +1,7 @@
 # ToDo
 
 ## 1. forge.py
-- [ ] Update colours
+- [ ] Update colours (can be done in later versions)
 - [x] add <br>
 'while True:' <br>
 for times when accepting input from user
@@ -16,7 +16,7 @@ for times when accepting input from user
 - [ ] print relevant details of the project using parameter passed as reference 
 
 ### delete
-
+- [ ] delete project ideas from table
 
 ## 2. create_db.py
 - [ ] Add database creation code
