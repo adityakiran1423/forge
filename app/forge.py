@@ -5,18 +5,23 @@ from rich import print as rprint
 
 # import sqlite3
 
-rprint("[red]+------------+[/red]")
-rprint("[red]| [/red][dark_orange]Forge ⚒️ 🔥[/dark_orange][red] |[/red]")
-rprint("[red]+------------+[/red]")
+# rprint("[red]+------------+[/red]")
+# rprint("[red]| [/red][dark_orange]Forge ⚒️ 🔥[/dark_orange][red] |[/red]")
+# rprint("[red]+------------+[/red]")
+
+print()
+rprint("[indian_red1]+-----------------------+[/indian_red1]")
+rprint("[indian_red1]|[/indian_red1][dark_orange] Welcome to Forge ⚒️ 🔥 [/dark_orange][indian_red1]|[/indian_red1]")
+rprint("[indian_red1]+-----------------------+[/indian_red1]", end="\n\n")
 
 app = typer.Typer()
 
 @app.command()
 def welcome():
     print()
-    rprint("[red]+-----------------------+[/red]")
-    rprint("[red]|[/red][dark_orange] Welcome to Forge ⚒️ 🔥 [/dark_orange][red]|[/red]")
-    rprint("[red]+-----------------------+[/red]", end="\n\n")
+    rprint("[indian_red1]+-----------------------+[/indian_red1]")
+    rprint("[indian_red1]|[/indian_red1][dark_orange] Welcome to Forge ⚒️ 🔥 [/dark_orange][indian_red1]|[/indian_red1]")
+    rprint("[indian_red1]+-----------------------+[/indian_red1]", end="\n\n")
 
 
 @app.command()
@@ -27,18 +32,19 @@ def create():
     rprint(f"[gold3]The name of the project you have entered is '{name.strip()}'[/gold3]")
 
     # proceed with database creation?
-    rprint("[gold3]Proceed with project creation? [y/N][/gold3]", end='')
-    print("[y/N]")
+    rprint("[gold3]Proceed with project creation? [Y/n][/gold3]", end='') 
+    "[Y/n] works but [y/N] doesn't work"
+    # print("[y/N]")
 
     while True:
         db_creation_choice = input()
 
-        if db_creation_choice.lower() == "y":
+        if db_creation_choice.lower() == "" or db_creation_choice.lower() == "y":
             rprint(f"[chartreuse3]Success ✨[/chartreuse3]")
             rprint(f"[chartreuse3]The name of the project is '{name.strip()}'[/chartreuse3]")
             break
 
-        elif db_creation_choice.lower() == "":
+        elif db_creation_choice.lower() == "n":
             rprint(f"[light_salmon1]Project '{name.strip()}' not created ❌[/light_salmon1]")
             rprint("[light_salmon1]Do you want to rename or abort project creation? [/light_salmon1]")
             print("[r/A]")
@@ -52,7 +58,7 @@ def create():
                     rprint(f"[chartreuse3]Renamed name of the project is {renamed_name.strip()}[/chartreuse3]")
                     break
 
-                elif abort_rename_choice.lower() == "":
+                elif abort_rename_choice.lower() == ""or abort_rename_choice.lower() == "a":
                     rprint("[red3]Aborting project creation process[/red3]")
                     break
 
