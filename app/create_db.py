@@ -12,14 +12,18 @@ Creation of only one dataBase, create three tables :
     * resources
     * status
     * github link
-    * tech stack (primary key)
+    * tech stack 
 3. Tech Table (stores the tech stack of the project)
     * frontend
     * backend
     * database
     * web frame work 
+    * apis
+    * modules
 '''
 
 import sqlite3
 
 connection = sqlite3.connect("forge.db")
+
+"create tables"
