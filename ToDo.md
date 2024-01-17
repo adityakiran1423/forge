@@ -10,13 +10,13 @@ for times when accepting input from user
 - [ ] add name of the project to the name table
 
 ### update
-- [ ] add option to add other details of the project to the table (only name gets added in create)
+- [ ] update parameter which gets passed to the command (think of good default) (only name gets added in create)
 
 ### show
-- [ ] print relevant details of the project using parameter passed as reference 
+- [ ] print parameter passed to the command, or else as default, print the description
 
 ### delete
-- [ ] delete project ideas from table
+- [ ] delete name row from name table and do relevant in other two tables
 
 ## 2. create_db.py
 - [ ] Add database creation code
