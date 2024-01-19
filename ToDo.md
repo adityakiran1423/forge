@@ -8,7 +8,8 @@ for times when accepting input from user
 
 ### create 
 - [ ] add name of the project to the name table
-
+- [ ] create new dev branch after completion of create command
+ 
 ### update
 - [ ] update parameter which gets passed to the command (think of good default) (only name gets added in create)
 
@@ -26,3 +27,7 @@ for times when accepting input from user
 
 ## Features 
 - [ ] Add 'Vault🔒' feature
+
+## Other
+- [ ] try except 
+- [ ] unit testing
