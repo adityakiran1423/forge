@@ -27,6 +27,7 @@ for times when accepting input from user
 
 ## Features 
 - [ ] Add 'Vault🔒' feature
+- [ ] Add a start date of project and end date of project entry
 
 ## Other
 - [ ] try except 
