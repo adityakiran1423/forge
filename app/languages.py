@@ -15,23 +15,15 @@ programming_languages = [item.text.strip() for item in language_items]  # Remove
 # Extract relevant languages
 programming_languages = programming_languages[124:814]
 
-# for language in programming_languages:
-#     print(language)
+# for number, language in enumerate(programming_languages):
+#     print(number+1, language)
 
-temp_lang_list = []
-languages_dict = {}
+# temp_lang_list = []
+# languages_dict = {}
 
-for language in range(len(programming_languages)):
-    if programming_languages[language][1:] == programming_languages[language + 1][1:]:
-        temp_lang_list.append(programming_languages[language])
-    else:
-        "implement line 31 logic"
-    pass
-
-"""
-language_dict={
-    'A': [''],
-    'B': ['B','Babbage','Ballerina','Bash','BASIC','Batch file','bc','BCPL','BeanShell','BETA','BLISS','Blocky','BlooP','Boo','Boomerang','Bosque'],
-    'C': []
-}
-"""
+# for language in range(len(programming_languages)):
+#     if programming_languages[language][1:] == programming_languages[language + 1][1:]:
+#         temp_lang_list.append(programming_languages[language])
+#     else:
+#         "implement line 31 logic"
+#     pass

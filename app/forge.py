@@ -26,6 +26,7 @@ def welcome():
 
 @app.command()
 def create():
+    "whenever project is created successfuly all three tables for that project should be created"
     rprint("[gold3]Please enter the name of the project  :[/gold3]")
     name = input()
 
@@ -94,24 +95,6 @@ def delete():
 if __name__ == "__main__":
     app()
 
-" ########################################################################### "
-
-"command logic testing colours for terminal output"
-# @app.command()
-# def colours():
-#     print("Command to see how the colour looks in the terminal")
-#     rprint("[gold3]gold3[/gold3]")
-#     rprint("[red]red[/red]")
-#     rprint("[orange_red1]orange_red1[/orange_red1]")
-#     rprint("[dark_orange]dark_orange[/dark_orange]")
-#     rprint("[orange3]orange3[/orange3]")
-#     rprint("[light_salmon1]light_salmon1[/light_salmon1]")
-#     rprint("[grey27]grey27[/grey27]")
-#     rprint("[cyan1]cyan1[/cyan1]")
-#     rprint("[cyan]cyan[/cyan]")
-#     rprint("[turquoise4]turquoise4[/turquoise4]")
-    
-" ------------------------------------------------------------------------------- "
 
 "logic for project status column"
 # rprint("[spring_green3]1. In Progress[/spring_green3]")
