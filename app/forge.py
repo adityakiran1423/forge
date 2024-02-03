@@ -9,6 +9,11 @@ from rich import print as rprint
 # rprint("[red]| [/red][dark_orange]Forge ⚒️ 🔥[/dark_orange][red] |[/red]")
 # rprint("[red]+------------+[/red]")
 
+# so basically, write a main function in create_db.py
+# this will create a database whenever it is called
+# then the rest of the functions, i.e., to add, delete or update data, you can write your own custom functions
+# add a __name__=='__main__' in create_db.py file
+
 print()
 rprint("[indian_red1]+-----------------------+[/indian_red1]")
 rprint("[indian_red1]|[/indian_red1][dark_orange] Welcome to Forge ⚒️ 🔥 [/dark_orange][indian_red1]|[/indian_red1]")
@@ -91,6 +96,7 @@ def delete():
     rprint("[gold3]implement logic for deleting a project here[/gold3]")
     "used for deleting projects once they are created"
 
+'add one more command for listing what all commands are there and a brief description'
 
 if __name__ == "__main__":
     app()
