@@ -2,6 +2,7 @@
 
 import typer
 from rich import print as rprint
+from rich.prompt import Prompt as prompt
 
 # import sqlite3
 
@@ -15,9 +16,9 @@ from rich import print as rprint
 # add a __name__=='__main__' in create_db.py file
 
 print()
-rprint("[indian_red1]+-----------------------+[/indian_red1]")
+rprint("[indian_red1]+------------------------+[/indian_red1]")
 rprint("[indian_red1]|[/indian_red1][dark_orange] Welcome to Forge ⚒️ 🔥 [/dark_orange][indian_red1]|[/indian_red1]")
-rprint("[indian_red1]+-----------------------+[/indian_red1]", end="\n\n")
+rprint("[indian_red1]+------------------------+[/indian_red1]", end="\n\n")
 
 app = typer.Typer()
 
@@ -27,16 +28,13 @@ def welcome():
     rprint("[indian_red1]+-----------------------+[/indian_red1]")
     rprint("[indian_red1]|[/indian_red1][dark_orange] Welcome to Forge ⚒️ 🔥 [/dark_orange][indian_red1]|[/indian_red1]")
     rprint("[indian_red1]+-----------------------+[/indian_red1]", end="\n\n")
-
+    
 
 @app.command()
 def create():
     "whenever project is created successfuly all three tables for that project should be created"
-    rprint("[gold3]Please enter the name of the project  :[/gold3]")
-    name = input()
-
-    rprint(f"[gold3]The name of the project you have entered is '{name.strip()}'[/gold3]")
-
+    name = prompt.ask("[gold3]Please enter the name of your project[/gold3]")
+    rprint(f"[gold3]The name of the project you have entered is '{name}'[/gold3]")   
     # proceed with database creation?
     rprint("[gold3]Proceed with project creation? [Y/n][/gold3]", end='') 
     "[Y/n] works but [y/N] doesn't work"
