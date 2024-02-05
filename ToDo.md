@@ -25,10 +25,12 @@ for times when accepting input from user
 - [ ] Import file to forge.py
 
 
-## Features 
+## Functionalities 
 - [ ] Add 'Vault🔒' feature
 - [ ] Add a start date of project and end date of project entry
+- [ ] Default command which lists what all commands are & brief description (forge list)
 
 ## Other
 - [ ] try except 
 - [ ] unit testing
+- [ ] Rich for user prompt instead of standard input()
