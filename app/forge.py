@@ -35,8 +35,8 @@ def create():
     "whenever project is created successfuly all three tables for that project should be created"
     name = prompt.ask("[gold3]Please enter the name of your project[/gold3]")
     rprint(f"[gold3]The name of the project you have entered is '{name}'[/gold3]")   
-    # proceed with database creation?
-    rprint("[gold3]Proceed with project creation? [Y/n][/gold3]", end='') 
+    # enter row addition code here
+    rprint("[gold3]Proceed with project creation? [Y/n][/gold3] ", end='') 
     "[Y/n] works but [y/N] doesn't work"
     # print("[y/N]")
 
@@ -46,6 +46,7 @@ def create():
         if db_creation_choice.lower() == "" or db_creation_choice.lower() == "y":
             rprint(f"[chartreuse3]Success ✨[/chartreuse3]")
             rprint(f"[chartreuse3]The name of the project is '{name.strip()}'[/chartreuse3]")
+            # enter row addition code here
             break
 
         elif db_creation_choice.lower() == "n":
@@ -60,6 +61,7 @@ def create():
                     renamed_name = input()
                     rprint(f"[chartreuse3]Success ✨[/chartreuse3]")
                     rprint(f"[chartreuse3]Renamed name of the project is {renamed_name.strip()}[/chartreuse3]")
+                    # enter row addition code here
                     break
 
                 elif abort_rename_choice.lower() == ""or abort_rename_choice.lower() == "a":
@@ -77,6 +79,7 @@ def create():
 
 @app.command()
 def update():
+    # update row info every time there 
     rprint("[gold3]implement logic for updating info about project here[/gold3]")
     "update contents of the table of a specific table"
 
