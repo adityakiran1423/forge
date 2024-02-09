@@ -23,9 +23,10 @@ one dataBase, create three tables :
 '''
 
 import sqlite3
+def main():
+    connection = sqlite3.connect("forge.db")
 
-connection = sqlite3.connect("forge.db")
+    cursor = connection.cursor()
 
-cursor = connection.cursor()
-
-# cursor.execute("CREATE TABLE fish (name TEXT, species TEXT, tank_number INTEGER)")
+if __name__=="__main__":
+    main()
