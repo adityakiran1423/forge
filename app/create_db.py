@@ -29,9 +29,3 @@ connection = sqlite3.connect("forge.db")
 cursor = connection.cursor()
 
 # cursor.execute("CREATE TABLE fish (name TEXT, species TEXT, tank_number INTEGER)")
-
-cursor.execute("CREATE TABLE name (name TEXT)")
-
-# cursor.execute("CREATE TABLE desc (name TEXT, description TEXT, aim TEXT, resources TEXT, status TEXT, gh_link TEXT)")
-
-# cursor.execute("CREATE TABLE fish (name TEXT, frontend TEXT, backend TEXT, db TEXT, framework TEXT, api TEXT, module TEXT)")
