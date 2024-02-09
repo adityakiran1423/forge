@@ -16,18 +16,18 @@ from rich.prompt import Prompt as prompt
 # add a __name__=='__main__' in create_db.py file
 
 print()
-rprint("[indian_red1]+------------------------+[/indian_red1]")
+rprint("[indian_red1]+-----------------------+[/indian_red1]")
 rprint("[indian_red1]|[/indian_red1][dark_orange] Welcome to Forge ⚒️ 🔥 [/dark_orange][indian_red1]|[/indian_red1]")
-rprint("[indian_red1]+------------------------+[/indian_red1]", end="\n\n")
+rprint("[indian_red1]+-----------------------+[/indian_red1]", end="\n\n")
 
 app = typer.Typer()
 
 @app.command()
 def welcome():
     print()
-    rprint("[indian_red1]+-----------------------+[/indian_red1]")
+    rprint("[indian_red1]+--------------------------+[/indian_red1]")
     rprint("[indian_red1]|[/indian_red1][dark_orange] Welcome to Forge ⚒️ 🔥 [/dark_orange][indian_red1]|[/indian_red1]")
-    rprint("[indian_red1]+-----------------------+[/indian_red1]", end="\n\n")
+    rprint("[indian_red1]+-------------------------+[/indian_red1]", end="\n\n")
     
 
 @app.command()
@@ -80,8 +80,28 @@ def create():
 @app.command()
 def update():
     # update row info every time there 
-    rprint("[gold3]implement logic for updating info about project here[/gold3]")
+    name=[
+        {"desc" : "Includes description of the project"},
+        {"aim" : "Includes the aim of the project"},
+        {"resc" : "Includes list of all the links to be used as references"},
+        {"status" : "Shows the status of the project"},
+        {"repo_link" : "Stores the GitHub repo link of the project if exists or else stores NULL"}
+    ]
+    # "desc", "aim", "resc", "status", "repo_link"
+    Name=[{"name" : "Stores the name of the project"}]
+    # tech_stack=[] implement this as well
+    resources=[{"name" : "Stores the name of the project"},
+               {"resc" : "Includes list of all the links to be used as references"}
+            ]
+    
+    rprint("[gold3]Enter project in which you want to update details[/gold3]")
+    rprint("[gold3]Please enter the table you want to update[/gold3]") # use rich prompt to ask for table name
+    # once you get the table name, print all table entries and ask which entry you want to change
+    
     "update contents of the table of a specific table"
+    # add another parameter in the function parameter list
+    # that var is project in which they want to make changes
+
 
 
 
