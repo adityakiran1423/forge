@@ -4,31 +4,26 @@ import typer
 from rich import print as rprint
 from rich.prompt import Prompt as prompt
 
-# import sqlite3
+# import create_db
 
-# rprint("[red]+------------+[/red]")
-# rprint("[red]| [/red][dark_orange]Forge ⚒️ 🔥[/dark_orange][red] |[/red]")
-# rprint("[red]+------------+[/red]")
-
-# so basically, write a main function in create_db.py
-# this will create a database whenever it is called
-# then the rest of the functions, i.e., to add, delete or update data, you can write your own custom functions
-# add a __name__=='__main__' in create_db.py file
+"""
+all the data that needs to be stored will be stored via functions declared in database.py
+"""
 
 print()
-rprint("[indian_red1]+-----------------------+[/indian_red1]")
-rprint("[indian_red1]|[/indian_red1][dark_orange] Welcome to Forge ⚒️ 🔥 [/dark_orange][indian_red1]|[/indian_red1]")
-rprint("[indian_red1]+-----------------------+[/indian_red1]", end="\n\n")
+rprint("[indian_red1]+------------+[/indian_red1]")
+# rprint("[indian_red1]|[/indian_red1][dark_orange] Forge ⚒️ 🔥 [/dark_orange][indian_red1]|[/indian_red1]")
+rprint("[indian_red1]|[/indian_red1][gold3] Forge ⚒️ 🔥 [/gold3][indian_red1]|[/indian_red1]")
+rprint("[indian_red1]+------------+[/indian_red1]", end="\n\n")
 
 app = typer.Typer()
 
 @app.command()
 def welcome():
+    rprint("[dark_orange]Welcome to Forge ⚒️ 🔥 [/dark_orange]")
     print()
-    rprint("[indian_red1]+--------------------------+[/indian_red1]")
-    rprint("[indian_red1]|[/indian_red1][dark_orange] Welcome to Forge ⚒️ 🔥 [/dark_orange][indian_red1]|[/indian_red1]")
-    rprint("[indian_red1]+-------------------------+[/indian_red1]", end="\n\n")
-    
+    rprint("[yellow2]The last project tracker app you'll ever need \n\nHave a perfect project idea you're worried you might forget? \nJust run the[/yellow2] [indian_red1]'forge create'[/indian_red1] [yellow2]command and store all relevant details!!\n[/yellow2]")
+    rprint("[yellow2]Never worry about forgetting your next project idea ever again!!\n[/yellow2]")
 
 @app.command()
 def create():
@@ -51,8 +46,8 @@ def create():
 
         elif db_creation_choice.lower() == "n":
             rprint(f"[light_salmon1]Project '{name.strip()}' not created ❌[/light_salmon1]")
-            rprint("[light_salmon1]Do you want to rename or abort project creation? [/light_salmon1]")
-            print("[r/A]")
+            rprint("[light_salmon1]Do you want to rename or abort project creation? [r/A][/light_salmon1]")
+            # print("[r/A]")
             while True:
                 abort_rename_choice = input()
 
@@ -60,7 +55,8 @@ def create():
                     rprint("[light_salmon1]Please enter renamed name of the project[/light_salmon1]")
                     renamed_name = input()
                     rprint(f"[chartreuse3]Success ✨[/chartreuse3]")
-                    rprint(f"[chartreuse3]Renamed name of the project is {renamed_name.strip()}[/chartreuse3]")
+                    rprint(f"[chartreuse3]Renamed name of the project is '{renamed_name.strip()}'[/chartreuse3]")
+
                     # enter row addition code here
                     break
 
