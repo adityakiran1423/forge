@@ -13,17 +13,21 @@ all the data that needs to be stored will be stored via functions declared in da
 print()
 rprint("[indian_red1]+------------+[/indian_red1]")
 # rprint("[indian_red1]|[/indian_red1][dark_orange] Forge ⚒️ 🔥 [/dark_orange][indian_red1]|[/indian_red1]")
-rprint("[indian_red1]|[/indian_red1][gold3] Forge ⚒️ 🔥 [/gold3][indian_red1]|[/indian_red1]")
+rprint("[indian_red1]|[/indian_red1][yellow3] Forge ⚒️ 🔥 [/yellow3][indian_red1]|[/indian_red1]")
 rprint("[indian_red1]+------------+[/indian_red1]", end="\n\n")
 
 app = typer.Typer()
 
 @app.command()
 def welcome():
+    "welcome to Forge!!!"
     rprint("[dark_orange]Welcome to Forge ⚒️ 🔥 [/dark_orange]")
     print()
-    rprint("[yellow2]The last project tracker app you'll ever need \n\nHave a perfect project idea you're worried you might forget? \nJust run the[/yellow2] [indian_red1]'forge create'[/indian_red1] [yellow2]command and store all relevant details!!\n[/yellow2]")
-    rprint("[yellow2]Never worry about forgetting your next project idea ever again!!\n[/yellow2]")
+    rprint("[gold3]Unleash your inner innovator with Forge, the ultimate terminal app for capturing and nurturing your project ideas[/gold3]\n")
+    rprint("[gold3]Say goodbye to scattered notes and forgetful details.[/gold3]", end="")
+    rprint("[gold3] Forge keeps your ideas organized, with clear aims, descriptions, and resources[/gold3]")
+    rprint("[gold3]Focus on what truly matters - bringing your dreams to life.[/gold3]\n")
+    rprint("[gold3]Forge empowers you to streamline your workflow and turn those sparks into reality.[/gold3]\n")
 
 @app.command()
 def create():
@@ -75,45 +79,21 @@ def create():
 
 @app.command()
 def update():
-    # update row info every time there 
-    name=[
-        {"desc" : "Includes description of the project"},
-        {"aim" : "Includes the aim of the project"},
-        {"resc" : "Includes list of all the links to be used as references"},
-        {"status" : "Shows the status of the project"},
-        {"repo_link" : "Stores the GitHub repo link of the project if exists or else stores NULL"}
-    ]
-    # "desc", "aim", "resc", "status", "repo_link"
-    Name=[{"name" : "Stores the name of the project"}]
-    # tech_stack=[] implement this as well
-    resources=[{"name" : "Stores the name of the project"},
-               {"resc" : "Includes list of all the links to be used as references"}
-            ]
-    
-    rprint("[gold3]Enter project in which you want to update details[/gold3]")
-    rprint("[gold3]Please enter the table you want to update[/gold3]") # use rich prompt to ask for table name
-    # once you get the table name, print all table entries and ask which entry you want to change
-    
-    "update contents of the table of a specific table"
-    # add another parameter in the function parameter list
-    # that var is project in which they want to make changes
-
-
+    "updates aspects of a particular project"
 
 
 @app.command()
 def show():
+    "shows details about specific projects"
     rprint("[gold3]implement logic for printing specified paramenter of project here[/gold3]")
-    "will display only the names of the project names"
-    "after identifying which project's details are needed, it will output relevant info"
 
 
 @app.command()
 def delete():
+    "deletes projects"
     rprint("[gold3]implement logic for deleting a project here[/gold3]")
     "used for deleting projects once they are created"
 
-'add one more command for listing what all commands are there and a brief description'
 
 if __name__ == "__main__":
     app()
