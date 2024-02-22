@@ -1,39 +1,32 @@
 '''
-Make a new file for creating a database and then import it?
+new tables (updated)
 
-one dataBase, create three tables :
-1. Name Table (stores the name of the projects)
-    * name (primary key)
-2. Description Table (stores details about the project)
-    * name (foreign key)
-    * description
-    * aim
-    * resources
-    * status
-    * github link
-    * tech stack 
-3. Tech Table (stores the tech stack of the project)
-    * name (foreign key)
-    * frontend
-    * backend
-    * database
-    * web frame work 
-    * apis
-    * modules
-4. Resources Table (stores the resource links for project)
-    * name 
-    * resource
+*names table
+    project_name
+    project_id
+    date_of_creation
+    time_of_creation
+
+*descriptions table
+    aim
+    desc
+    status
+    name
+
+*resources
+    name
+    resource
 '''
 
-import sqlite3
-
-# trying changes
-# trying changes after revert
+from setup import conn, c
 
 def main():
-    connection = sqlite3.connect("forge.db")
-    cursor = connection.cursor()
-    print("executing create_db.py")
+    create_names='''create table if not exists names(
+                    project_name primary key TEXT, 
+                    project_id TEXT, 
+                    time_stamp TIMESTAMP
+                    )'''
+    c.execute()
 
 def make_table():
     # write making new table logic here
