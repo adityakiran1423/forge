@@ -45,18 +45,29 @@ def main():
     c.execute(create_resources)
 
 
-def make_new_entry():
+def create_ID()-> str:
+    """
+    generate a random number, if it is divisible by 2, set flag to true, else false
+    if true, id starts with a letter, alternating with 
+    """
+
+
+def create_entry(p_name) -> None:
     # make new entries for all tables here
+    query='''insert into names(project_name) values(?)'''
+    c.execute(query, p_name)
     pass
 
 def edit_entry():
     # write logic for editing enrtries of all tables here
-    # add logic for clearing of the entry as well
     pass
 
-def delete_project():
+def show_entry():
+    # shows aspects of project
+    pass
+
+def delete_entry():
     # add logic fot what needs to be done if project is deleted
-    # delete from all tables
     pass
 
 # if __name__=="__main__":

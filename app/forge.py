@@ -4,7 +4,7 @@ import typer
 from rich import print as rprint
 from rich.prompt import Prompt as prompt
 
-# import create_db
+from database import create_entry, edit_entry, show_entry, delete_entry
 
 """
 all the data that needs to be stored will be stored via functions declared in database.py
@@ -18,26 +18,29 @@ rprint("[indian_red1]+------------+[/indian_red1]", end="\n\n")
 
 app = typer.Typer()
 
+
 @app.command()
 def welcome():
     "welcome to Forge!!!"
     rprint("[dark_orange]Welcome to Forge ⚒️ 🔥 [/dark_orange]")
     print()
-    rprint("[gold3]Unleash your inner innovator with Forge, the ultimate terminal app for capturing and nurturing your project ideas[/gold3]\n")
+    rprint("[gold3]Unleash your inner innovator with Forge, [/gold3]")
+    rprint("[gold3]the ultimate terminal app for capturing and nurturing your project ideas[/gold3]\n")
+
     rprint("[gold3]Say goodbye to scattered notes and forgetful details.[/gold3]", end="")
     rprint("[gold3] Forge keeps your ideas organized, with clear aims, descriptions, and resources[/gold3]")
     rprint("[gold3]Focus on what truly matters - bringing your dreams to life.[/gold3]\n")
+
     rprint("[gold3]Forge empowers you to streamline your workflow and turn those sparks into reality.[/gold3]\n")
+
 
 @app.command()
 def create():
     "whenever project is created successfuly all three tables for that project should be created"
     name = prompt.ask("[gold3]Please enter the name of your project[/gold3]")
-    rprint(f"[gold3]The name of the project you have entered is '{name}'[/gold3]")   
+    rprint(f"[gold3]The name of the project you have entered is '{name}'[/gold3]")
     # enter row addition code here
-    rprint("[gold3]Proceed with project creation? [Y/n][/gold3] ", end='') 
-    "[Y/n] works but [y/N] doesn't work"
-    # print("[y/N]")
+    rprint("[gold3]Proceed with project creation? [Y/n][/gold3] ", end="")
 
     while True:
         db_creation_choice = input()
@@ -45,11 +48,11 @@ def create():
         if db_creation_choice.lower() == "" or db_creation_choice.lower() == "y":
             rprint(f"[chartreuse3]Success ✨[/chartreuse3]")
             rprint(f"[chartreuse3]The name of the project is '{name.strip()}'[/chartreuse3]")
-            # enter row addition code here
+            create_entry(name.strip())
             break
 
         elif db_creation_choice.lower() == "n":
-            rprint(f"[light_salmon1]Project '{name.strip()}' not created ❌[/light_salmon1]")
+            rprint(f"[light_salmon1]Project '{name.strip()}' not created[/light_salmon1]")
             rprint("[light_salmon1]Do you want to rename or abort project creation? [r/A][/light_salmon1]")
             # print("[r/A]")
             while True:
@@ -60,21 +63,20 @@ def create():
                     renamed_name = input()
                     rprint(f"[chartreuse3]Success ✨[/chartreuse3]")
                     rprint(f"[chartreuse3]Renamed name of the project is '{renamed_name.strip()}'[/chartreuse3]")
-
-                    # enter row addition code here
+                    create_entry(renamed_name.strip())
                     break
 
-                elif abort_rename_choice.lower() == ""or abort_rename_choice.lower() == "a":
+                elif abort_rename_choice.lower() == "" or abort_rename_choice.lower() == "a":
                     rprint("[red3]Aborting project creation process[/red3]")
                     break
 
                 else:
-                    rprint("[red3]Did not enter 'r' or 'A'❗[/red3]")
+                    rprint("[red3]Did not enter 'r' or 'A'[/red3]")
 
             break
-            
+
         else:
-            rprint("[red3]Did not enter 'y' or 'N'❗[/red3]")
+            rprint("[red3]Did not enter 'y' or 'N'[/red3]")
 
 
 @app.command()
