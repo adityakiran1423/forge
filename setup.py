@@ -1,6 +1,11 @@
 import sqlite3
 import os
 
+
+'creates the db once here'
+'include requirements.txt and ensure set up is complete when this file is run once'
+'all dependencies should be installed and Forge should be ready to go'
+
 database_path="database.db"
 
 if not os.path.exists(database_path):
@@ -14,4 +19,3 @@ else:
     print("Connected to existing database.")
 
 c = conn.cursor()
-
