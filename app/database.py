@@ -26,11 +26,24 @@ def main():
                     project_id TEXT, 
                     time_stamp TIMESTAMP
                     )'''
-    c.execute()
+    c.execute(create_names)
 
-def make_table():
-    # write making new table logic here
-    pass
+    create_descriptions='''create table if not exists descriptions(
+                            project_name TEXT,
+                            desc TEXT, 
+                            status TEXT, 
+                            aim TEXT
+                            FOREIGN KEY (project_name) REFERENCES names(project_name)
+                        )'''
+    c.execute(create_descriptions)
+
+    create_resources='''create table if not exists resources(
+                        resources TEXT,
+                        project_name TEXT,
+                        FOREIGN KEY (project_name) REFERENCES name(project_name) 
+                        )'''
+    c.execute(create_resources)
+
 
 def make_new_entry():
     # make new entries for all tables here
