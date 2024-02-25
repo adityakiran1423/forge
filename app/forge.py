@@ -37,37 +37,35 @@ def welcome():
 @app.command()
 def create():
     "whenever project is created successfuly all three tables for that project should be created"
-    name = prompt.ask("[gold3]Please enter the name of your project[/gold3]")
+    name = prompt.ask("[gold3]Enter the name of your project[/gold3]")
     rprint(f"[gold3]The name of the project you have entered is '{name}'[/gold3]")
     # enter row addition code here
-    rprint("[gold3]Proceed with project creation? [Y/n][/gold3] ", end="")
+    rprint("[gold3]Proceed with creation? [Y/n][/gold3] ", end="")
 
     while True:
         db_creation_choice = input()
 
         if db_creation_choice.lower() == "" or db_creation_choice.lower() == "y":
-            rprint(f"[chartreuse3]Success ✨[/chartreuse3]")
-            rprint(f"[chartreuse3]The name of the project is '{name.strip()}'[/chartreuse3]")
+            rprint(f"[chartreuse3]Project '{name.strip()}' created  successfully ✨[/chartreuse3]")
             create_entry(name.strip())
             break
 
         elif db_creation_choice.lower() == "n":
             rprint(f"[light_salmon1]Project '{name.strip()}' not created[/light_salmon1]")
             rprint("[light_salmon1]Do you want to rename or abort project creation? [r/A][/light_salmon1]")
-            # print("[r/A]")
+
             while True:
                 abort_rename_choice = input()
 
                 if abort_rename_choice.lower() == "r":
-                    rprint("[light_salmon1]Please enter renamed name of the project[/light_salmon1]")
+                    rprint("[light_salmon1]Enter the name of the project[/light_salmon1]")
                     renamed_name = input()
-                    rprint(f"[chartreuse3]Success ✨[/chartreuse3]")
-                    rprint(f"[chartreuse3]Renamed name of the project is '{renamed_name.strip()}'[/chartreuse3]")
+                    rprint(f"[chartreuse3]Project '{renamed_name.strip()}' created successfully ✨[/chartreuse3]")
                     create_entry(renamed_name.strip())
                     break
 
                 elif abort_rename_choice.lower() == "" or abort_rename_choice.lower() == "a":
-                    rprint("[red3]Aborting project creation process[/red3]")
+                    rprint("[red3]Aborting ...[/red3]")
                     break
 
                 else:
