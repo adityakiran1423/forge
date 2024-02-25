@@ -44,6 +44,7 @@ def create_ID()-> str:
 
     return ID
     
+
 def random_char()->str:
     alphabets_list=string.ascii_lowercase
     random_char = random.choice(alphabets_list)
@@ -65,6 +66,8 @@ def create_entry(p_name) -> None:
     c = datetime.now()
     current_time = c.strftime('%H:%M:%S')
     c.execute(query, p_name,p_ID,date, current_time)
+    c.commit()
+    c.close()
     pass
 
 def edit_entry():
