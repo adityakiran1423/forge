@@ -50,3 +50,6 @@ create_resources='''create table if not exists resources(
                     )'''
 
 c.execute(create_resources)
+
+c.commit()
+c.close()
