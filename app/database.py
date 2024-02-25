@@ -27,6 +27,18 @@ from setup import conn, c
 def main():
     pass
 
+def create_entry(p_name) -> None:
+    # make new entries for all tables here
+    query='''insert into names(project_name) values(?,?,?,?)'''
+    p_ID=create_ID()
+    date=date.today()
+    c = datetime.now()
+    current_time = c.strftime('%H:%M:%S')
+    c.execute(query, p_name,p_ID,date, current_time)
+    c.commit()
+    c.close()
+    pass
+
 
 def create_ID()-> str:
     char1,char2,char3='','',''
@@ -56,19 +68,6 @@ def random_number()->int:
     random_num = random.choice(numbers_list)
     return random_num
 
-
-
-def create_entry(p_name) -> None:
-    # make new entries for all tables here
-    query='''insert into names(project_name) values(?,?,?,?)'''
-    p_ID=create_ID()
-    date=date.today()
-    c = datetime.now()
-    current_time = c.strftime('%H:%M:%S')
-    c.execute(query, p_name,p_ID,date, current_time)
-    c.commit()
-    c.close()
-    pass
 
 def edit_entry():
     # write logic for editing enrtries of all tables here
