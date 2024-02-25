@@ -18,44 +18,53 @@ new tables (updated)
     resource
 '''
 
+import string
+import random
+from datetime import datetime
+
 from setup import conn, c
 
 def main():
-    create_names='''create table if not exists names(
-                    project_name primary key TEXT, 
-                    project_id TEXT, 
-                    time_stamp TIMESTAMP
-                    )'''
-    c.execute(create_names)
-
-    create_descriptions='''create table if not exists descriptions(
-                            project_name TEXT,
-                            desc TEXT, 
-                            status TEXT, 
-                            aim TEXT
-                            FOREIGN KEY (project_name) REFERENCES names(project_name)
-                        )'''
-    c.execute(create_descriptions)
-
-    create_resources='''create table if not exists resources(
-                        resources TEXT,
-                        project_name TEXT,
-                        FOREIGN KEY (project_name) REFERENCES name(project_name) 
-                        )'''
-    c.execute(create_resources)
+    pass
 
 
 def create_ID()-> str:
-    """
-    generate a random number, if it is divisible by 2, set flag to true, else false
-    if true, id starts with a letter, alternating with 
-    """
+    char1,char2,char3='','',''
+    while char1!=char2!=char3:
+        char1=random_char()
+        char2=random_char()
+        char3=random_char()
+
+    rand1, rand2=0,0
+    while rand1!=rand2:
+        rand1=random_number()
+        rand2=random_number()
+
+    ID=char1+chr(rand1)+char2+chr(rand2)+char3
+
+    return ID
+    
+def random_char()->str:
+    alphabets_list=string.ascii_lowercase
+    random_char = random.choice(alphabets_list)
+    return random_char
+
+
+def random_number()->int:
+    numbers_list=['1','2','3','4','5','6','7','8','9']
+    random_num = random.choice(numbers_list)
+    return random_num
+
 
 
 def create_entry(p_name) -> None:
     # make new entries for all tables here
-    query='''insert into names(project_name) values(?)'''
-    c.execute(query, p_name)
+    query='''insert into names(project_name) values(?,?,?,?)'''
+    p_ID=create_ID()
+    date=date.today()
+    c = datetime.now()
+    current_time = c.strftime('%H:%M:%S')
+    c.execute(query, p_name,p_ID,date, current_time)
     pass
 
 def edit_entry():
