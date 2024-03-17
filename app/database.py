@@ -21,6 +21,7 @@ new tables (updated)
 import string
 import random
 from datetime import datetime
+from datetime import date
 
 from setup import conn, c
 
@@ -29,21 +30,19 @@ def main():
 
 def create_entry(p_name) -> None:
     # make new entries for all tables here
-    query='''insert into names(project_name) values(?,?,?,?)'''
+    query='''insert into names values(?,?,?,?)'''
     p_ID=create_ID()
-    date=date.today()
-    c = datetime.now()
-    current_time = c.strftime('%H:%M:%S')
-    c.execute(query, p_name, p_ID, date, current_time)
-    c.commit()
-    c.close()
+    today=date.today()
+    dt = datetime.now()
+    current_time = dt.strftime('%H:%M:%S')
+    c.execute(query, p_name, p_ID, today, current_time)
+    conn.commit()
     confirmentry()
 
 def confirmentry():
     query='''select * from names'''
     c.execute(query)
-    c.commit()
-    c.close()
+    conn.commit()
 
 
 def create_ID()-> str:
