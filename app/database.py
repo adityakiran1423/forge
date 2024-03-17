@@ -34,14 +34,20 @@ def create_entry(p_name) -> None:
     date=date.today()
     c = datetime.now()
     current_time = c.strftime('%H:%M:%S')
-    c.execute(query, p_name,p_ID,date, current_time)
+    c.execute(query, p_name, p_ID, date, current_time)
     c.commit()
     c.close()
-    pass
+    confirmentry()
+
+def confirmentry():
+    query='''select * from names'''
+    c.execute(query)
+    c.commit()
+    c.close()
 
 
 def create_ID()-> str:
-    char1,char2,char3='','',''
+    char1,char2,char3= '','',''
     while char1!=char2!=char3:
         char1=random_char()
         char2=random_char()

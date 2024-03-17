@@ -12,7 +12,6 @@ all the data that needs to be stored will be stored via functions declared in da
 
 print()
 rprint("[indian_red1]+------------+[/indian_red1]")
-# rprint("[indian_red1]|[/indian_red1][dark_orange] Forge ⚒️ 🔥 [/dark_orange][indian_red1]|[/indian_red1]")
 rprint("[indian_red1]|[/indian_red1][yellow3] Forge ⚒️ 🔥 [/yellow3][indian_red1]|[/indian_red1]")
 rprint("[indian_red1]+------------+[/indian_red1]", end="\n\n")
 
@@ -35,7 +34,7 @@ def welcome():
 
 
 @app.command()
-def create():
+def create():        
     "whenever project is created successfuly all three tables for that project should be created"
     name = prompt.ask("[gold3]Enter the name of your project[/gold3]")
     rprint(f"[gold3]The name of the project you have entered is '{name}'[/gold3]")
