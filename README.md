@@ -1,4 +1,4 @@
-# Welcome to Forge 🌋🔥⚒️
+# Forge 🌋🔥⚒️
 
 ## What even is a forge?
 /fɔːdʒ/ <br>
