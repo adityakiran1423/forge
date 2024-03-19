@@ -88,7 +88,7 @@ def show():
 
 
 @app.command()
-def delete():
+def destroy():
     "deletes projects"
     rprint("[gold3]implement logic for deleting a project here[/gold3]")
     "used for deleting projects once they are created"
