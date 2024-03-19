@@ -43,22 +43,17 @@ def create_entry(p_name) -> None:
     # c.execute(query, p_name, p_ID, today, current_time)
     conn.commit()
     confirmentry()
-    confirmentry1()
-
-def confirmentry():
-    query='''select * from names'''
-    c.execute(query)
-    conn.commit()
     
-def confirmentry1():
-    query='''SELECT * FROM names'''
+def confirmentry():
+    print("printing latest row added")
+    query='''SELECT project_name FROM names ORDER BY project_name DESC LIMIT 1'''
     c.execute(query)
     rows = c.fetchall()
     if rows:
-        for row in rows:
-            print(row)
+        for i in range(len(rows)):
+            print(rows[i])
     else:
-        print("No rows found in the 'names' table.")
+        print("logic failure")
     conn.commit()
 
 
