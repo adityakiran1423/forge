@@ -19,21 +19,6 @@ app = typer.Typer()
 
 
 @app.command()
-def welcome():
-    "welcome to Forge!!!"
-    rprint("[dark_orange]Welcome to Forge ⚒️ 🔥 [/dark_orange]")
-    print()
-    rprint("[gold3]Unleash your inner innovator with Forge, [/gold3]")
-    rprint("[gold3]the ultimate terminal app for capturing and nurturing your project ideas[/gold3]\n")
-
-    rprint("[gold3]Say goodbye to scattered notes and forgetful details.[/gold3]", end="")
-    rprint("[gold3] Forge keeps your ideas organized, with clear aims, descriptions, and resources[/gold3]")
-    rprint("[gold3]Focus on what truly matters - bringing your dreams to life.[/gold3]\n")
-
-    rprint("[gold3]Forge empowers you to streamline your workflow and turn those sparks into reality.[/gold3]\n")
-
-
-@app.command()
 def create():        
     "whenever project is created successfuly all three tables for that project should be created"
     name = prompt.ask("[gold3]Enter the name of your project[/gold3]")
@@ -45,8 +30,13 @@ def create():
         db_creation_choice = input()
 
         if db_creation_choice.lower() == "" or db_creation_choice.lower() == "y":
-            rprint(f"[chartreuse3]Project '{name.strip()}' created  successfully ✨[/chartreuse3]")
-            create_entry(name.strip())
+            name=name.strip()
+            entry_creation_details_list=create_entry(name)
+            rprint(f"[chartreuse3]Project '{name}' created  successfully ✨[/chartreuse3]")
+            rprint(f"[gold3]Project Name : {name}[/gold3]")
+            rprint(f"[gold3]Project ID : {entry_creation_details_list[0]}[/gold3]")
+            rprint(f"[gold3]Date of creation : {entry_creation_details_list[1]}[/gold3]")
+            rprint(f"[gold3]Time of creation : {entry_creation_details_list[2]}[/gold3]")
             break
 
         elif db_creation_choice.lower() == "n":
@@ -59,8 +49,12 @@ def create():
                 if abort_rename_choice.lower() == "r":
                     rprint("[light_salmon1]Enter the name of the project[/light_salmon1]")
                     renamed_name = input()
+                    entry_creation_details_list=create_entry(renamed_name.strip())
                     rprint(f"[chartreuse3]Project '{renamed_name.strip()}' created successfully ✨[/chartreuse3]")
-                    create_entry(renamed_name.strip())
+                    rprint(f"[gold3]Project Name : {name}[/gold3]")
+                    rprint(f"[gold3]Project ID : {entry_creation_details_list[0]}[/gold3]")
+                    rprint(f"[gold3]Date of creation : {entry_creation_details_list[1]}[/gold3]")
+                    rprint(f"[gold3]Time of creation : {entry_creation_details_list[2]}[/gold3]")
                     break
 
                 elif abort_rename_choice.lower() == "" or abort_rename_choice.lower() == "a":
@@ -77,6 +71,13 @@ def create():
 
 
 @app.command()
+def destroy():
+    "deletes projects"
+    rprint("[gold3]implement logic for deleting a project here[/gold3]")
+    "used for deleting projects once they are created"
+
+
+@app.command()
 def update():
     "updates aspects of a particular project"
 
@@ -88,10 +89,18 @@ def show():
 
 
 @app.command()
-def destroy():
-    "deletes projects"
-    rprint("[gold3]implement logic for deleting a project here[/gold3]")
-    "used for deleting projects once they are created"
+def welcome():
+    "welcome to Forge!!!"
+    rprint("[dark_orange]Welcome to Forge ⚒️ 🔥 [/dark_orange]")
+    print()
+    rprint("[gold3]Unleash your inner innovator with Forge, [/gold3]")
+    rprint("[gold3]the ultimate terminal app for capturing and nurturing your project ideas[/gold3]\n")
+
+    rprint("[gold3]Say goodbye to scattered notes and forgetful details.[/gold3]", end="")
+    rprint("[gold3] Forge keeps your ideas organized, with clear aims, descriptions, and resources[/gold3]")
+    rprint("[gold3]Focus on what truly matters - bringing your dreams to life.[/gold3]\n")
+
+    rprint("[gold3]Forge empowers you to streamline your workflow and turn those sparks into reality.[/gold3]\n")
 
 
 if __name__ == "__main__":
