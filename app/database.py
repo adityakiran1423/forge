@@ -35,13 +35,30 @@ def create_entry(p_name) -> None:
     today=date.today()
     dt = datetime.now()
     current_time = dt.strftime('%H:%M:%S')
-    c.execute(query, p_name, p_ID, today, current_time)
+    print(f"p_ID is {p_ID}")
+    print(f"today is {today}")
+    print(f"current_time is {current_time}")
+
+    c.execute("INSERT INTO names VALUES (?, ?, ?, ?)", (p_name, p_ID, today, current_time))
+    # c.execute(query, p_name, p_ID, today, current_time)
     conn.commit()
     confirmentry()
+    confirmentry1()
 
 def confirmentry():
     query='''select * from names'''
     c.execute(query)
+    conn.commit()
+    
+def confirmentry1():
+    query='''SELECT * FROM names'''
+    c.execute(query)
+    rows = c.fetchall()
+    if rows:
+        for row in rows:
+            print(row)
+    else:
+        print("No rows found in the 'names' table.")
     conn.commit()
 
 
