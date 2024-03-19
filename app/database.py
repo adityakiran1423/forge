@@ -28,21 +28,16 @@ from setup import conn, c
 def main():
     pass
 
-def create_entry(p_name) -> None:
+def create_entry(p_name):
     # make new entries for all tables here
-    query='''insert into names values(?,?,?,?)'''
     p_ID=create_ID()
     today=date.today()
     dt = datetime.now()
     current_time = dt.strftime('%H:%M:%S')
-    print(f"p_ID is {p_ID}")
-    print(f"today is {today}")
-    print(f"current_time is {current_time}")
-
     c.execute("INSERT INTO names VALUES (?, ?, ?, ?)", (p_name, p_ID, today, current_time))
     # c.execute(query, p_name, p_ID, today, current_time)
     conn.commit()
-    confirmentry()
+    return [p_ID,today, current_time]
     
 def confirmentry():
     print("printing latest row added")
@@ -50,8 +45,8 @@ def confirmentry():
     c.execute(query)
     rows = c.fetchall()
     if rows:
-        for i in range(len(rows)):
-            print(rows[i])
+            for row in rows:
+                print(row)
     else:
         print("logic failure")
     conn.commit()
