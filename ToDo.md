@@ -7,7 +7,7 @@
 for times when accepting input from user
 
 ### create 
-- [ ] add name of the project to the name table
+- [x] add name of the project to the name table
 - [ ] create new dev branch after completion of create command
  
 ### update
@@ -27,11 +27,11 @@ for times when accepting input from user
 
 ## Functionalities 
 - [ ] Add 'Vault🔒' feature
-- [ ] Default command which lists what all commands are & brief description (forge list)
+- [x] Default command which lists what all commands are & brief description (forge list)
 
 ## Other
 - [ ] try except 
 - [ ] unit testing
 - [ ] Rich for user prompt instead of standard input()
 - [ ] Add a start date of project and end date of project entry
-- [ ] A filed which stores the date and time of project creation
+- [x] A filed which stores the date and time of project creation
