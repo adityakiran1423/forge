@@ -20,6 +20,8 @@ new tables (updated)
 
 import string
 import random
+import uuid
+
 from datetime import datetime
 from datetime import date
 
@@ -53,32 +55,8 @@ def confirmentry():
 
 
 def create_ID()-> str:
-    char1,char2,char3= '','',''
-    while char1!=char2!=char3:
-        char1=random_char()
-        char2=random_char()
-        char3=random_char()
-
-    rand1, rand2=0,0
-    while rand1!=rand2:
-        rand1=random_number()
-        rand2=random_number()
-
-    ID=char1+chr(rand1)+char2+chr(rand2)+char3
-
+    ID = str(uuid.uuid4())
     return ID
-    
-
-def random_char()->str:
-    alphabets_list=string.ascii_lowercase
-    random_char = random.choice(alphabets_list)
-    return random_char
-
-
-def random_number()->int:
-    numbers_list=['1','2','3','4','5','6','7','8','9']
-    random_num = random.choice(numbers_list)
-    return random_num
 
 
 def edit_entry():
