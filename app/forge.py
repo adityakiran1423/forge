@@ -6,9 +6,6 @@ from rich.prompt import Prompt as prompt
 
 from database import create_entry, edit_entry, show_entry, delete_entry
 
-"""
-all the data that needs to be stored will be stored via functions declared in database.py
-"""
 
 print()
 rprint("[indian_red1]+------------+[/indian_red1]")
@@ -21,9 +18,22 @@ app = typer.Typer()
 @app.command()
 def create():        
     "whenever project is created successfuly all three tables for that project should be created"
+
+    project_name=prompt_name()
+    if project_name!=None:
+        entry_creation_details_list=create_entry(project_name)
+
+        rprint(f"[chartreuse3]Project '{project_name}' created  successfully ✨[/chartreuse3]")
+
+        rprint(f"[gold3]Project Name : {project_name}[/gold3]")
+        rprint(f"[gold3]Project ID : {entry_creation_details_list[0]}[/gold3]")
+        rprint(f"[gold3]Date of creation : {entry_creation_details_list[1]}[/gold3]")
+        rprint(f"[gold3]Time of creation : {entry_creation_details_list[2]}[/gold3]")
+    
+
+def prompt_name()->str:
     name = prompt.ask("[gold3]Enter the name of your project[/gold3]")
     rprint(f"[gold3]The name of the project you have entered is '{name}'[/gold3]")
-    # enter row addition code here
     rprint("[gold3]Proceed with creation? [Y/n][/gold3] ", end="")
 
     while True:
@@ -31,17 +41,11 @@ def create():
 
         if db_creation_choice.lower() == "" or db_creation_choice.lower() == "y":
             name=name.strip()
-            entry_creation_details_list=create_entry(name)
-            rprint(f"[chartreuse3]Project '{name}' created  successfully ✨[/chartreuse3]")
-            rprint(f"[gold3]Project Name : {name}[/gold3]")
-            rprint(f"[gold3]Project ID : {entry_creation_details_list[0]}[/gold3]")
-            rprint(f"[gold3]Date of creation : {entry_creation_details_list[1]}[/gold3]")
-            rprint(f"[gold3]Time of creation : {entry_creation_details_list[2]}[/gold3]")
-            break
+            return name
 
         elif db_creation_choice.lower() == "n":
             rprint(f"[light_salmon1]Project '{name.strip()}' not created[/light_salmon1]")
-            rprint("[light_salmon1]Do you want to rename or abort project creation? [r/A][/light_salmon1]")
+            rprint("[light_salmon1]Do you want to rename or abort project creation? [R/a][/light_salmon1]")
 
             while True:
                 abort_rename_choice = input()
@@ -49,30 +53,27 @@ def create():
                 if abort_rename_choice.lower() == "r":
                     rprint("[light_salmon1]Enter the name of the project[/light_salmon1]")
                     renamed_name = input()
-                    entry_creation_details_list=create_entry(renamed_name.strip())
-                    rprint(f"[chartreuse3]Project '{renamed_name.strip()}' created successfully ✨[/chartreuse3]")
-                    rprint(f"[gold3]Project Name : {name}[/gold3]")
-                    rprint(f"[gold3]Project ID : {entry_creation_details_list[0]}[/gold3]")
-                    rprint(f"[gold3]Date of creation : {entry_creation_details_list[1]}[/gold3]")
-                    rprint(f"[gold3]Time of creation : {entry_creation_details_list[2]}[/gold3]")
-                    break
+                    renamed_name.strip()
+                    return name
 
                 elif abort_rename_choice.lower() == "" or abort_rename_choice.lower() == "a":
                     rprint("[red3]Aborting ...[/red3]")
                     break
 
                 else:
-                    rprint("[red3]Did not enter 'r' or 'A'[/red3]")
+                    rprint("[red3]Did not enter 'R' or 'a'[/red3]")
 
             break
 
         else:
             rprint("[red3]Did not enter 'y' or 'N'[/red3]")
+    pass
 
 
 @app.command()
 def destroy():
     "deletes projects"
+
     rprint("[gold3]implement logic for deleting a project here[/gold3]")
     "used for deleting projects once they are created"
 
@@ -85,12 +86,14 @@ def update():
 @app.command()
 def show():
     "shows details about specific projects"
+
     rprint("[gold3]implement logic for printing specified paramenter of project here[/gold3]")
 
 
 @app.command()
 def welcome():
     "welcome to Forge!!!"
+
     rprint("[dark_orange]Welcome to Forge ⚒️ 🔥 [/dark_orange]")
     print()
     rprint("[gold3]Unleash your inner innovator with Forge, [/gold3]")

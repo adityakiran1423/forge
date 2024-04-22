@@ -33,10 +33,6 @@ create_names='''create table if not exists names(
 
 c.execute(create_names)
 
-# c.execute("create table names(project_name TEXT primary key, project_id TEXT, date TEXT, time TEXT)")
-
-
-
 
 create_descriptions='''create table if not exists descriptions(
                         project_name TEXT,

@@ -18,8 +18,7 @@ new tables (updated)
     resource
 '''
 
-import string
-import random
+
 import uuid
 
 from datetime import datetime
