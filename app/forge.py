@@ -4,7 +4,7 @@ import typer
 from rich import print as rprint
 from rich.prompt import Prompt as prompt
 
-from database import create_entry, edit_entry, show_entry, delete_entry
+from ..utils.db_utils import create_entry, edit_entry, show_entry, delete_entry
 
 
 print()
@@ -73,8 +73,8 @@ def prompt_name()->str:
 @app.command()
 def destroy():
     "deletes projects"
-
-    rprint("[gold3]implement logic for deleting a project here[/gold3]")
+    # rprint("[gold3]implement logic for deleting a project here[/gold3]")
+    rprint("[gold3]Enter the project you want to delete[/gold3]")
     "used for deleting projects once they are created"
 
 
@@ -86,8 +86,9 @@ def update():
 @app.command()
 def show():
     "shows details about specific projects"
-
-    rprint("[gold3]implement logic for printing specified paramenter of project here[/gold3]")
+    # rprint("[gold3]implement logic for printing specified paramenter of project here[/gold3]")
+    rprint("[gold3]The following projects have been created : [/gold3]")
+    show_entry()
 
 
 @app.command()
