@@ -24,7 +24,7 @@ import uuid
 from datetime import datetime, date
 # from datetime import date
 
-from setup import conn, c
+from app.setup import conn, c
 
 def main():
     pass
