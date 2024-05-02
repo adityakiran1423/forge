@@ -53,8 +53,13 @@ def edit_entry():
 
 def show_entry():
     # shows aspects of project
-    query='''SELECT project_name FROM names'''
+    # query='''SELECT * FROM names'''
+    query = '''SELECT project_name FROM names'''
     c.execute(query)
+    results = c.fetchall()  # fetch all results
+    for row in results:
+        print(row)
+    conn.commit()
 
 def delete_entry():
     # add logic fot what needs to be done if project is deleted
