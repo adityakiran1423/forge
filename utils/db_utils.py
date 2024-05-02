@@ -1,11 +1,11 @@
-'''
+"""
 new tables (updated)
 
 *names table
     project_name
     project_id
-    date_of_creation
-    time_of_creation
+    date
+    time
 
 *descriptions table
     aim
@@ -16,33 +16,30 @@ new tables (updated)
 *resources
     name
     resource
-'''
+"""
 
 
 import uuid
 
 from datetime import datetime, date
-# from datetime import date
 
 from app.setup import conn, c
 
-def main():
-    pass
 
 def create_entry(p_name):
-    p_ID=create_ID()
-    today=date.today()
+    p_ID = create_ID()
+    today = date.today()
     dt = datetime.now()
 
-    current_time = dt.strftime('%H:%M:%S')
+    current_time = dt.strftime("%H:%M:%S")
 
     c.execute("INSERT INTO names VALUES (?, ?, ?, ?)", (p_name, p_ID, today, current_time))
     conn.commit()
 
-    return [p_ID,today, current_time]
+    return [p_ID, today, current_time]
 
 
-def create_ID()-> str:
+def create_ID() -> str:
     ID = str(uuid.uuid4())
     return ID
 
@@ -51,33 +48,42 @@ def edit_entry():
     # write logic for editing enrtries of all tables here
     pass
 
+
 def show_entry():
-    # shows aspects of project
-    # query='''SELECT * FROM names'''
-    query = '''SELECT project_name FROM names'''
+    project_list = []
+    creation_time_list = []
+    creation_date_list = []
+
+    query = """SELECT project_name FROM names"""
     c.execute(query)
+
     results = c.fetchall()  # fetch all results
     for row in results:
-        print(row)
+        project_list.append(row[0])
+
+    query = """SELECT time FROM names"""
+    c.execute(query)
+
+    results = c.fetchall()
+    for time in results:
+        creation_time_list.append(time[0])
+
+    query = """SELECT date FROM names"""
+    c.execute(query)
+
+    results = c.fetchall()
+    for date in results:
+        creation_date_list.append(date[0])
+
     conn.commit()
+
+    return project_list, creation_time_list, creation_date_list
+
 
 def delete_entry():
     # add logic fot what needs to be done if project is deleted
     pass
 
+
 # if __name__=="__main__":
 #     main()
-
-# def confirmentry():
-#     query='''SELECT project_name FROM names ORDER BY project_name DESC LIMIT 1'''
-
-#     c.execute(query)
-#     rows = c.fetchall()
-
-#     if rows:
-#             for row in rows:
-#                 print(row)
-#     else:
-#         print("logic failure")
-
-#     conn.commit()
