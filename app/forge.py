@@ -21,22 +21,24 @@ app = typer.Typer()
 
 
 @app.command()
-def create():        
+def create():
     "whenever project is created successfuly all three tables for that project should be created"
 
-    project_name=prompt_name()
-    if project_name!=None:
-        entry_creation_details_list=db_utils.create_entry(project_name)
+    project_name = prompt_name()
+    if project_name != None:
+        entry_creation_details_list = db_utils.create_entry(project_name)
 
         rprint(f"[chartreuse3]Project '{project_name}' created  successfully ✨[/chartreuse3]")
-
+        print()
+        rprint("Project details :")
+        print()
         rprint(f"[gold3]Project Name : {project_name}[/gold3]")
         rprint(f"[gold3]Project ID : {entry_creation_details_list[0]}[/gold3]")
         rprint(f"[gold3]Date of creation : {entry_creation_details_list[1]}[/gold3]")
         rprint(f"[gold3]Time of creation : {entry_creation_details_list[2]}[/gold3]")
-    
 
-def prompt_name()->str:
+
+def prompt_name() -> str:
     name = prompt.ask("[gold3]Enter the name of your project[/gold3]")
     rprint(f"[gold3]The name of the project you have entered is '{name}'[/gold3]")
     rprint("[gold3]Proceed with creation? [Y/n][/gold3] ", end="")
@@ -45,7 +47,7 @@ def prompt_name()->str:
         db_creation_choice = input()
 
         if db_creation_choice.lower() == "" or db_creation_choice.lower() == "y":
-            name=name.strip()
+            name = name.strip()
             return name
 
         elif db_creation_choice.lower() == "n":
@@ -59,7 +61,7 @@ def prompt_name()->str:
                     rprint("[light_salmon1]Enter the name of the project[/light_salmon1]")
                     renamed_name = input()
                     renamed_name.strip()
-                    return name
+                    return renamed_name
 
                 elif abort_rename_choice.lower() == "" or abort_rename_choice.lower() == "a":
                     rprint("[red3]Aborting ...[/red3]")
@@ -67,9 +69,7 @@ def prompt_name()->str:
 
                 else:
                     rprint("[red3]Did not enter 'R' or 'a'[/red3]")
-
             break
-
         else:
             rprint("[red3]Did not enter 'y' or 'N'[/red3]")
     pass
@@ -93,7 +93,9 @@ def show():
     "shows details about specific projects"
     # rprint("[gold3]implement logic for printing specified paramenter of project here[/gold3]")
     rprint("[gold3]The following projects have been created : [/gold3]")
-    db_utils.show_entry()
+    projects, times, dates = db_utils.show_entry()
+    for i in range(len(projects)):
+        print(f"{projects[i]} created at {times[i]} on {dates[i]}")
 
 
 @app.command()
@@ -103,13 +105,11 @@ def welcome():
     rprint("[dark_orange]Welcome to Forge ⚒️ 🔥 [/dark_orange]")
     print()
     rprint("[gold3]Unleash your inner innovator with Forge, [/gold3]")
-    rprint("[gold3]the ultimate terminal app for capturing and nurturing your project ideas[/gold3]\n")
+    rprint("[gold3]The ultimate terminal app for capturing your project ideas[/gold3]\n")
 
     rprint("[gold3]Say goodbye to scattered notes and forgetful details.[/gold3]", end="")
-    rprint("[gold3] Forge keeps your ideas organized, with clear aims, descriptions, and resources[/gold3]")
-    rprint("[gold3]Focus on what truly matters - bringing your dreams to life.[/gold3]\n")
-
-    rprint("[gold3]Forge empowers you to streamline your workflow and turn those sparks into reality.[/gold3]\n")
+    rprint("[gold3] Forge keeps your ideas organized, with aims, descriptions, and resources[/gold3]")
+    rprint("[gold3]Focus on what truly matters ~> building your projects to successfully.[/gold3]\n")
 
 
 if __name__ == "__main__":
