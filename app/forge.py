@@ -1,11 +1,16 @@
 " welcome to Forge "
+import sys
+from pathlib import Path
 
 import typer
 from rich import print as rprint
 from rich.prompt import Prompt as prompt
 
-from ..utils.db_utils import create_entry, edit_entry, show_entry, delete_entry
+# from utils.db_utils import create_entry, edit_entry, show_entry, delete_entry
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from utils import db_utils
 
 print()
 rprint("[indian_red1]+------------+[/indian_red1]")
@@ -21,7 +26,7 @@ def create():
 
     project_name=prompt_name()
     if project_name!=None:
-        entry_creation_details_list=create_entry(project_name)
+        entry_creation_details_list=db_utils.create_entry(project_name)
 
         rprint(f"[chartreuse3]Project '{project_name}' created  successfully ✨[/chartreuse3]")
 
@@ -88,7 +93,7 @@ def show():
     "shows details about specific projects"
     # rprint("[gold3]implement logic for printing specified paramenter of project here[/gold3]")
     rprint("[gold3]The following projects have been created : [/gold3]")
-    show_entry()
+    db_utils.show_entry()
 
 
 @app.command()
