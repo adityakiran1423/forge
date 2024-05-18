@@ -72,16 +72,36 @@ def prompt_name() -> str:
             break
         else:
             rprint("[red3]Did not enter 'y' or 'N'[/red3]")
-    pass
 
 
 @app.command()
 def destroy():
     "deletes projects"
-    # rprint("[gold3]implement logic for deleting a project here[/gold3]")
-    rprint("[gold3]Enter the project you want to delete[/gold3]")
-    "used for deleting projects once they are created"
+    projects, times, dates = db_utils.show_entry()
+    rprint("[gold3]Do you want to list all existing projects? [Y/n][/gold3]")
 
+    while True:
+        list_projects_input = input()
+        if list_projects_input.lower()=='y':
+            # projects, times, dates = db_utils.show_entry()
+            for i in range(len(projects)):
+                print(f"{projects[i]} created at {times[i]} on {dates[i]}")
+                break
+        elif list_projects_input.lower()=='n':
+                break
+        else:
+            print("Please enter Y or n")
+
+    rprint("[gold3]Enter the project you want to delete : [/gold3]")
+    project_to_be_deleted = input()
+    if project_to_be_deleted in projects:
+        # write the code to delete it
+        # if project present drop all info about it from all tables
+        
+        pass
+    else:
+        print("Error, entered project does not exist")
+        print("Please try again")
 
 @app.command()
 def update():
@@ -91,7 +111,6 @@ def update():
 @app.command()
 def show():
     "shows details about specific projects"
-    # rprint("[gold3]implement logic for printing specified paramenter of project here[/gold3]")
     rprint("[gold3]The following projects have been created : [/gold3]")
     projects, times, dates = db_utils.show_entry()
     for i in range(len(projects)):
