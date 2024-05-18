@@ -35,11 +35,11 @@ c.execute(create_names)
 
 
 create_descriptions = """create table if not exists descriptions(
-                        project_name TEXT,
+                        project_id TEXT,
                         desc TEXT, 
                         status TEXT, 
                         aim TEXT,
-                        FOREIGN KEY (project_name) REFERENCES names(project_name)
+                        FOREIGN KEY (project_id) REFERENCES names(project_id)
                     )"""
 
 c.execute(create_descriptions)
@@ -47,8 +47,8 @@ c.execute(create_descriptions)
 
 create_resources = """create table if not exists resources(
                     resources TEXT,
-                    project_name TEXT,
-                    FOREIGN KEY (project_name) REFERENCES name(project_name) 
+                    project_id TEXT,
+                    FOREIGN KEY (project_id) REFERENCES name(project_id) 
                     )"""
 
 c.execute(create_resources)
