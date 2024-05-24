@@ -49,15 +49,18 @@ def edit_entry():
     pass
 
 
-def show_entry():
+def show_entry() -> list:
+    # fetchall may be late and fetching everything even though there is no need for it, so just fetch 
+    # first element, no need for all and then append the first
     project_list = []
     creation_time_list = []
     creation_date_list = []
+    projectid_list = []
 
     query = """SELECT project_name FROM names"""
     c.execute(query)
 
-    results = c.fetchall()  # fetch all results
+    results = c.fetchall()  
     for row in results:
         project_list.append(row[0])
 
@@ -75,13 +78,32 @@ def show_entry():
     for date in results:
         creation_date_list.append(date[0])
 
+    query = """SELECT project_id FROM names"""
+    c.execute(query)
+
+    results = c.fetchall()
+    for id in results:
+        projectid_list.append(date[0])
+
     conn.commit()
 
-    return project_list, creation_time_list, creation_date_list
+    return project_list, projectid_list, creation_time_list, creation_date_list
 
 
-def delete_entry():
+def delete_entry(project_to_be_deleted, project_id, project_id_list) -> bool:
     # add logic fot what needs to be done if project is deleted
+    if project_id in project_id_list:
+        # write the code to delete it
+        # if project present drop all info about it from all tables
+        params=(project_id,)
+        c.execute("DELETE FROM name WHERE project_id = ?", params)
+        c.execute("DELETE FROM description WHERE project_id = ?", params)
+        c.execute("DELETE FROM resources WHERE project_id = ?", params)     
+    else:
+        return False
+
+def update_entry():
+    # add logic for what needs to be done whrn the user wants to update project details
     pass
 
 
