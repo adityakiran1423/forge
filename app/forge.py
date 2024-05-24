@@ -6,16 +6,11 @@ import typer
 from rich import print as rprint
 from rich.prompt import Prompt as prompt
 
-# from utils.db_utils import create_entry, edit_entry, show_entry, delete_entry
+from utils import db_utils
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from utils import db_utils
-
 print()
-rprint("[indian_red1]+------------+[/indian_red1]")
-rprint("[indian_red1]|[/indian_red1][yellow3] Forge ⚒️ 🔥 [/yellow3][indian_red1]|[/indian_red1]")
-rprint("[indian_red1]+------------+[/indian_red1]", end="\n\n")
 
 app = typer.Typer()
 
@@ -36,8 +31,11 @@ def create():
         rprint(f"[gold3]Project ID : {entry_creation_details_list[0]}[/gold3]")
         rprint(f"[gold3]Date of creation : {entry_creation_details_list[1]}[/gold3]")
         rprint(f"[gold3]Time of creation : {entry_creation_details_list[2]}[/gold3]")
+    
+    else:
+        print("No name was given to the project")
 
-
+# try to make this a module function
 def prompt_name() -> str:
     name = prompt.ask("[gold3]Enter the name of your project[/gold3]")
     rprint(f"[gold3]The name of the project you have entered is '{name}'[/gold3]")
@@ -77,13 +75,15 @@ def prompt_name() -> str:
 @app.command()
 def destroy():
     "deletes projects"
-    projects, times, dates = db_utils.show_entry()
+    projects, projectid, times, dates = db_utils.show_entry()
+
+    name_id = dict(zip(projects, projectid))
+
     rprint("[gold3]Do you want to list all existing projects? [Y/n][/gold3]")
 
     while True:
         list_projects_input = input()
         if list_projects_input.lower()=='y':
-            # projects, times, dates = db_utils.show_entry()
             for i in range(len(projects)):
                 print(f"{projects[i]} created at {times[i]} on {dates[i]}")
                 break
@@ -94,14 +94,16 @@ def destroy():
 
     rprint("[gold3]Enter the project you want to delete : [/gold3]")
     project_to_be_deleted = input()
-    if project_to_be_deleted in projects:
-        # write the code to delete it
-        # if project present drop all info about it from all tables
-        
-        pass
+
+    id_project_to_be_deleted = name_id[project_to_be_deleted]
+    destroy_operation_status = db_utils.delete_entry(project_to_be_deleted, id_project_to_be_deleted, projectid)
+
+    if destroy_operation_status:
+        print(f"Project {project_to_be_deleted} has been deleted")
     else:
-        print("Error, entered project does not exist")
-        print("Please try again")
+        print("Project not found!!!")
+        print("Project could not be deleted")
+
 
 @app.command()
 def update():
@@ -112,7 +114,7 @@ def update():
 def show():
     "shows details about specific projects"
     rprint("[gold3]The following projects have been created : [/gold3]")
-    projects, times, dates = db_utils.show_entry()
+    projects, _, times, dates = db_utils.show_entry()
     for i in range(len(projects)):
         print(f"{projects[i]} created at {times[i]} on {dates[i]}")
 
@@ -120,6 +122,23 @@ def show():
 @app.command()
 def welcome():
     "welcome to Forge!!!"
+
+    print(r"""
+      ___         ___           ___           ___           ___     
+     /  /\       /  /\         /  /\         /  /\         /  /\    
+    /  /:/_     /  /::\       /  /::\       /  /:/_       /  /:/_   
+   /  /:/ /\   /  /:/\:\     /  /:/\:\     /  /:/ /\     /  /:/ /\  
+  /  /:/ /:/  /  /:/  \:\   /  /:/~/:/    /  /:/_/::\   /  /:/ /:/_ 
+ /__/:/ /:/  /__/:/ \__\:\ /__/:/ /:/___ /__/:/__\/\:\ /__/:/ /:/ /\\
+ \  \:\/:/   \  \:\ /  /:/ \  \:\/:::::/ \  \:\ /~~/:/ \  \:\/:/ /:/
+  \  \::/     \  \:\  /:/   \  \::/~~~~   \  \:\  /:/   \  \::/ /:/ 
+   \  \:\      \  \:\/:/     \  \:\        \  \:\/:/     \  \:\/:/  
+    \  \:\      \  \::/       \  \:\        \  \::/       \  \::/   
+     \__\/       \__\/         \__\/         \__\/         \__\/    
+    """)
+
+    print("")
+    print("")
 
     rprint("[dark_orange]Welcome to Forge ⚒️ 🔥 [/dark_orange]")
     print()
