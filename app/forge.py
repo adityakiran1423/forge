@@ -85,8 +85,10 @@ def destroy():
             for i in range(len(projects)):
                 print(f"{projects[i]} created at {times[i]} on {dates[i]}")
                 break
+            
         elif list_projects_input.lower()=='n':
                 break
+                
         else:
             print("Please enter Y or n")
 
