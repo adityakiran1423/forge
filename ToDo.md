@@ -12,4 +12,4 @@
         1. Issues
         2. Features
         3. To be fixed
-- [ ] add a .gitignore file and add ToDo and the __pycache__ to it (trying)
+- [ ] add a .gitignore file and add ToDo and the __pycache__ to it (trying ffs)
