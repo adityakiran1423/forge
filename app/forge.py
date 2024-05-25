@@ -6,8 +6,6 @@ import typer
 from rich import print as rprint
 from rich.prompt import Prompt as prompt
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-
 from utils import db_utils
 
 print()

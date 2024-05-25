@@ -1,19 +1,17 @@
 """
-new tables (updated structure)
-
-*names table
+names table
     project_name
     project_id
     date
     time
 
-*descriptions table
+descriptions table
     aim
     desc
     status
     name
 
-*resources
+resources
     name
     resource
 """
@@ -30,18 +28,14 @@ def create_entry(p_name):
     p_ID = create_ID()
     today = date.today()
     dt = datetime.now()
-
     current_time = dt.strftime("%H:%M:%S")
-
     c.execute("INSERT INTO names VALUES (?, ?, ?, ?)", (p_name, p_ID, today, current_time))
     conn.commit()
-
     return [p_ID, today, current_time]
 
 
 def create_ID() -> str:
-    ID = str(uuid.uuid4())
-    return ID
+    return str(uuid.uuid4()) 
 
 
 def edit_entry():
@@ -50,8 +44,6 @@ def edit_entry():
 
 
 def show_entry() -> list:
-    # fetchall may be late and fetching everything even though there is no need for it, so just fetch 
-    # first element, no need for all and then append the first
     project_list = []
     creation_time_list = []
     creation_date_list = []
@@ -59,28 +51,24 @@ def show_entry() -> list:
 
     query = """SELECT project_name FROM names"""
     c.execute(query)
-
     results = c.fetchall()  
     for row in results:
         project_list.append(row[0])
 
     query = """SELECT time FROM names"""
     c.execute(query)
-
     results = c.fetchall()
     for time in results:
         creation_time_list.append(time[0])
 
     query = """SELECT date FROM names"""
     c.execute(query)
-
     results = c.fetchall()
     for date in results:
         creation_date_list.append(date[0])
 
     query = """SELECT project_id FROM names"""
     c.execute(query)
-
     results = c.fetchall()
     for id in results:
         projectid_list.append(date[0])
@@ -91,7 +79,6 @@ def show_entry() -> list:
 
 
 def delete_entry(project_to_be_deleted, project_id, project_id_list) -> bool:
-    # add logic fot what needs to be done if project is deleted
     if project_id in project_id_list:
         # write the code to delete it
         # if project present drop all info about it from all tables
@@ -105,7 +92,3 @@ def delete_entry(project_to_be_deleted, project_id, project_id_list) -> bool:
 def update_entry():
     # add logic for what needs to be done whrn the user wants to update project details
     pass
-
-
-# if __name__=="__main__":
-#     main()
