@@ -9,13 +9,15 @@ import os
 
 
 database_path = "database.db"
+db_creation_status = 0
 
 if not os.path.exists(database_path):
     # Create the database if it doesn't exist
     # conn = sqlite3.connect(database_path,
     #                        detect_types=sqlite3.PARSE_DECLTYPES | sqlite3.PARSE_COLNAMES)
     conn = sqlite3.connect(database_path)
-    print("Database created successfully!")
+    db_creation_status = 1
+    # print("Database created successfully!")
 else:
     # Connect to the existing database
     conn = sqlite3.connect(database_path)

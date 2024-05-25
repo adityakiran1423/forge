@@ -1,5 +1,5 @@
 """
-new tables (updated)
+new tables (updated structure)
 
 *names table
     project_name
@@ -23,7 +23,7 @@ import uuid
 
 from datetime import datetime, date
 
-from app.setup import conn, c
+from setup import conn, c
 
 
 def create_entry(p_name):
