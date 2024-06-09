@@ -1,7 +1,3 @@
-" welcome to Forge "
-import sys
-from pathlib import Path
-
 import typer
 from rich import print as rprint
 from rich.prompt import Prompt as prompt
@@ -15,8 +11,6 @@ app = typer.Typer()
 
 @app.command()
 def create():
-    "whenever project is created successfuly all three tables for that project should be created"
-
     project_name = prompt_name()
     if project_name != None:
         entry_creation_details_list = db_utils.create_entry(project_name)
