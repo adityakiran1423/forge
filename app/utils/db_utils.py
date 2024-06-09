@@ -18,8 +18,14 @@ resources
 
 
 import uuid
+import os
+import sys
 
 from datetime import datetime, date
+
+parent_directory = os.path.abspath('..')
+sys.path.append(parent_directory)
+
 
 from setup import conn, c
 
